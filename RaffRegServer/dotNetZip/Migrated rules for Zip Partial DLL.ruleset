@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="Migrated rules for Zip Partial DLL.ruleset" Description="Dieser Regelsatz wurde aus der CodeAnalysisRules-Eigenschaft für die Debug (Any CPU)-Konfiguration in Projekt &quot;C:\Users\nck\Desktop\dotnetzip\Examples\C#\DotNetZip\Zip Partial DLL\Zip Partial DLL.csproj&quot; erstellt." ToolsVersion="10.0">
+  <IncludeAll Action="Warning" />
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA1304" Action="None" />
+    <Rule Id="CA1305" Action="None" />
+    <Rule Id="CA1307" Action="None" />
+    <Rule Id="CA1707" Action="None" />
+    <Rule Id="CA2122" Action="None" />
+  </Rules>
+</RuleSet>
