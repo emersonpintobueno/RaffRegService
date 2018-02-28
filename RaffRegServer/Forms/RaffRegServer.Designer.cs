@@ -1558,6 +1558,7 @@
             this.label18.Size = new System.Drawing.Size(52, 13);
             this.label18.TabIndex = 3;
             this.label18.Text = "Assemble";
+            this.label18.Click += new System.EventHandler(this.AboutBox);
             // 
             // RaffRegServer
             // 

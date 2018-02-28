@@ -601,5 +601,11 @@ namespace RaffRegServer
             }
 
         }
+
+        public void AboutBox(object sender, EventArgs e)
+        {
+            Forms.AboutBox a = new Forms.AboutBox();
+            a.Show();
+        }
     }
 }
