@@ -6,8 +6,6 @@ using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Linq;
 using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RaffRegServer.Classes

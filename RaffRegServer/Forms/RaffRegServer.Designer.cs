@@ -461,7 +461,7 @@
             this.chMWeb.Location = new System.Drawing.Point(6, 159);
             this.chMWeb.Name = "chMWeb";
             this.chMWeb.Size = new System.Drawing.Size(109, 17);
-            this.chMWeb.TabIndex = 1;
+            this.chMWeb.TabIndex = 7;
             this.chMWeb.Text = "Utilizar menu web";
             this.toolTip.SetToolTip(this.chMWeb, "Habilita a interface web para o Raffinato.\r\nUsado apenas em clientes muito antigo" +
         "s.");
@@ -473,7 +473,7 @@
             this.chTouch.Location = new System.Drawing.Point(6, 136);
             this.chTouch.Name = "chTouch";
             this.chTouch.Size = new System.Drawing.Size(116, 17);
-            this.chTouch.TabIndex = 1;
+            this.chTouch.TabIndex = 6;
             this.chTouch.Text = "Utilizar modo touch";
             this.toolTip.SetToolTip(this.chTouch, "Habilita modo Touch.\r\nSe estiver habilitado permitira a \r\nabertura de cartões e v" +
         "endas com\r\n apenas um toque.");
@@ -816,7 +816,7 @@
             this.chBoxFiltros.Location = new System.Drawing.Point(5, 246);
             this.chBoxFiltros.Name = "chBoxFiltros";
             this.chBoxFiltros.Size = new System.Drawing.Size(83, 17);
-            this.chBoxFiltros.TabIndex = 1;
+            this.chBoxFiltros.TabIndex = 11;
             this.chBoxFiltros.Text = "Ativar Filtros";
             this.toolTip.SetToolTip(this.chBoxFiltros, "Função disponível apenas para micro-terminal.\r\nHabilita a utilização de filtros e" +
         "m tempo real.\r\nNo caso de pesquisas os textos irão sendo filtrados\r\nde acordo co" +
@@ -840,7 +840,7 @@
             this.chBoxLog.Location = new System.Drawing.Point(6, 223);
             this.chBoxLog.Name = "chBoxLog";
             this.chBoxLog.Size = new System.Drawing.Size(131, 17);
-            this.chBoxLog.TabIndex = 1;
+            this.chBoxLog.TabIndex = 10;
             this.chBoxLog.Text = "Ativar Log do Servidor";
             this.toolTip.SetToolTip(this.chBoxLog, resources.GetString("chBoxLog.ToolTip"));
             this.chBoxLog.UseVisualStyleBackColor = true;
@@ -862,7 +862,7 @@
             this.chCartaoConsumo.Location = new System.Drawing.Point(104, 42);
             this.chCartaoConsumo.Name = "chCartaoConsumo";
             this.chCartaoConsumo.Size = new System.Drawing.Size(104, 17);
-            this.chCartaoConsumo.TabIndex = 1;
+            this.chCartaoConsumo.TabIndex = 3;
             this.chCartaoConsumo.Text = "Cartão Consumo";
             this.toolTip.SetToolTip(this.chCartaoConsumo, "Habilita cartão consumo.");
             this.chCartaoConsumo.UseVisualStyleBackColor = true;
@@ -873,7 +873,7 @@
             this.chVendaMesa.Location = new System.Drawing.Point(104, 19);
             this.chVendaMesa.Name = "chVendaMesa";
             this.chVendaMesa.Size = new System.Drawing.Size(86, 17);
-            this.chVendaMesa.TabIndex = 1;
+            this.chVendaMesa.TabIndex = 2;
             this.chVendaMesa.Text = "Venda Mesa";
             this.toolTip.SetToolTip(this.chVendaMesa, "Habilita o módulo de mesas.");
             this.chVendaMesa.UseVisualStyleBackColor = true;
@@ -884,7 +884,7 @@
             this.chVendaRapida.Location = new System.Drawing.Point(6, 19);
             this.chVendaRapida.Name = "chVendaRapida";
             this.chVendaRapida.Size = new System.Drawing.Size(94, 17);
-            this.chVendaRapida.TabIndex = 1;
+            this.chVendaRapida.TabIndex = 0;
             this.chVendaRapida.Text = "Venda Rápida";
             this.toolTip.SetToolTip(this.chVendaRapida, "Habilita venda rápida.\r\n");
             this.chVendaRapida.UseVisualStyleBackColor = true;
@@ -950,7 +950,7 @@
             this.groupBox14.Location = new System.Drawing.Point(225, 6);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Size = new System.Drawing.Size(214, 185);
-            this.groupBox14.TabIndex = 14;
+            this.groupBox14.TabIndex = 4;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "Conexão";
             // 
@@ -959,35 +959,35 @@
             this.txtBHostRetaguardaPorta.Location = new System.Drawing.Point(112, 71);
             this.txtBHostRetaguardaPorta.Name = "txtBHostRetaguardaPorta";
             this.txtBHostRetaguardaPorta.Size = new System.Drawing.Size(96, 20);
-            this.txtBHostRetaguardaPorta.TabIndex = 0;
+            this.txtBHostRetaguardaPorta.TabIndex = 3;
             // 
             // txtBFilialImg
             // 
             this.txtBFilialImg.Location = new System.Drawing.Point(112, 110);
             this.txtBFilialImg.Name = "txtBFilialImg";
             this.txtBFilialImg.Size = new System.Drawing.Size(96, 20);
-            this.txtBFilialImg.TabIndex = 0;
+            this.txtBFilialImg.TabIndex = 5;
             // 
             // txtBHostPDVPorta
             // 
             this.txtBHostPDVPorta.Location = new System.Drawing.Point(112, 32);
             this.txtBHostPDVPorta.Name = "txtBHostPDVPorta";
             this.txtBHostPDVPorta.Size = new System.Drawing.Size(96, 20);
-            this.txtBHostPDVPorta.TabIndex = 0;
+            this.txtBHostPDVPorta.TabIndex = 1;
             // 
             // txtBHostRetaguarda
             // 
             this.txtBHostRetaguarda.Location = new System.Drawing.Point(6, 71);
             this.txtBHostRetaguarda.Name = "txtBHostRetaguarda";
             this.txtBHostRetaguarda.Size = new System.Drawing.Size(96, 20);
-            this.txtBHostRetaguarda.TabIndex = 0;
+            this.txtBHostRetaguarda.TabIndex = 2;
             // 
             // txtBFilial
             // 
             this.txtBFilial.Location = new System.Drawing.Point(6, 110);
             this.txtBFilial.Name = "txtBFilial";
             this.txtBFilial.Size = new System.Drawing.Size(96, 20);
-            this.txtBFilial.TabIndex = 0;
+            this.txtBFilial.TabIndex = 4;
             // 
             // txtBHostPDV
             // 
@@ -1032,7 +1032,7 @@
             this.tabMain.Name = "tabMain";
             this.tabMain.SelectedIndex = 0;
             this.tabMain.Size = new System.Drawing.Size(678, 386);
-            this.tabMain.TabIndex = 2;
+            this.tabMain.TabIndex = 0;
             // 
             // tabReg
             // 
@@ -1053,6 +1053,7 @@
             this.tabReg.Size = new System.Drawing.Size(670, 360);
             this.tabReg.TabIndex = 0;
             this.tabReg.Text = "Registro";
+            this.toolTip.SetToolTip(this.tabReg, "Nesta aba são definidas todas as operações relativas ao registro do Sistema.");
             this.tabReg.UseVisualStyleBackColor = true;
             // 
             // groupBox8
@@ -1081,7 +1082,7 @@
             this.groupBox8.Location = new System.Drawing.Point(446, 6);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(218, 298);
-            this.groupBox8.TabIndex = 8;
+            this.groupBox8.TabIndex = 7;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Servidor";
             // 
@@ -1091,7 +1092,7 @@
             this.btSQLServico.Location = new System.Drawing.Point(143, 108);
             this.btSQLServico.Name = "btSQLServico";
             this.btSQLServico.Size = new System.Drawing.Size(69, 23);
-            this.btSQLServico.TabIndex = 2;
+            this.btSQLServico.TabIndex = 5;
             this.btSQLServico.Text = "Executar";
             this.btSQLServico.UseVisualStyleBackColor = true;
             this.btSQLServico.Click += new System.EventHandler(this.BTIniciarPararSQL);
@@ -1101,7 +1102,7 @@
             this.btConsulta.Location = new System.Drawing.Point(143, 148);
             this.btConsulta.Name = "btConsulta";
             this.btConsulta.Size = new System.Drawing.Size(69, 23);
-            this.btConsulta.TabIndex = 2;
+            this.btConsulta.TabIndex = 7;
             this.btConsulta.Text = "Consultar Bases";
             this.btConsulta.UseVisualStyleBackColor = true;
             this.btConsulta.Click += new System.EventHandler(this.btConsultaBases);
@@ -1112,7 +1113,7 @@
             this.cmbSQLArquivo.Location = new System.Drawing.Point(6, 150);
             this.cmbSQLArquivo.Name = "cmbSQLArquivo";
             this.cmbSQLArquivo.Size = new System.Drawing.Size(131, 21);
-            this.cmbSQLArquivo.TabIndex = 1;
+            this.cmbSQLArquivo.TabIndex = 6;
             // 
             // cmBSQLServico
             // 
@@ -1120,7 +1121,7 @@
             this.cmBSQLServico.Location = new System.Drawing.Point(6, 110);
             this.cmBSQLServico.Name = "cmBSQLServico";
             this.cmBSQLServico.Size = new System.Drawing.Size(131, 21);
-            this.cmBSQLServico.TabIndex = 1;
+            this.cmBSQLServico.TabIndex = 4;
             // 
             // cmbInstancias
             // 
@@ -1128,7 +1129,7 @@
             this.cmbInstancias.Location = new System.Drawing.Point(115, 72);
             this.cmbInstancias.Name = "cmbInstancias";
             this.cmbInstancias.Size = new System.Drawing.Size(97, 21);
-            this.cmbInstancias.TabIndex = 1;
+            this.cmbInstancias.TabIndex = 3;
             // 
             // chAtivaMon
             // 
@@ -1136,7 +1137,7 @@
             this.chAtivaMon.Location = new System.Drawing.Point(6, 269);
             this.chAtivaMon.Name = "chAtivaMon";
             this.chAtivaMon.Size = new System.Drawing.Size(171, 17);
-            this.chAtivaMon.TabIndex = 1;
+            this.chAtivaMon.TabIndex = 12;
             this.chAtivaMon.Text = "Ativar Monitorador de Serviços";
             this.chAtivaMon.UseVisualStyleBackColor = true;
             this.chAtivaMon.CheckedChanged += new System.EventHandler(this.chAtivaMonitorador);
@@ -1155,7 +1156,7 @@
             this.txtBServMicro.Location = new System.Drawing.Point(6, 190);
             this.txtBServMicro.Name = "txtBServMicro";
             this.txtBServMicro.Size = new System.Drawing.Size(103, 20);
-            this.txtBServMicro.TabIndex = 0;
+            this.txtBServMicro.TabIndex = 8;
             // 
             // label30
             // 
@@ -1180,21 +1181,21 @@
             this.txtTimeoutQuery.Location = new System.Drawing.Point(115, 190);
             this.txtTimeoutQuery.Name = "txtTimeoutQuery";
             this.txtTimeoutQuery.Size = new System.Drawing.Size(100, 20);
-            this.txtTimeoutQuery.TabIndex = 0;
+            this.txtTimeoutQuery.TabIndex = 9;
             // 
             // txtBSQLServidor
             // 
             this.txtBSQLServidor.Location = new System.Drawing.Point(6, 72);
             this.txtBSQLServidor.Name = "txtBSQLServidor";
             this.txtBSQLServidor.Size = new System.Drawing.Size(103, 20);
-            this.txtBSQLServidor.TabIndex = 0;
+            this.txtBSQLServidor.TabIndex = 2;
             // 
             // txtBSQLPorta
             // 
             this.txtBSQLPorta.Location = new System.Drawing.Point(143, 33);
             this.txtBSQLPorta.Name = "txtBSQLPorta";
             this.txtBSQLPorta.Size = new System.Drawing.Size(69, 20);
-            this.txtBSQLPorta.TabIndex = 0;
+            this.txtBSQLPorta.TabIndex = 1;
             // 
             // txtBSQLHost
             // 
@@ -1208,7 +1209,7 @@
             this.btLLogs.Location = new System.Drawing.Point(446, 313);
             this.btLLogs.Name = "btLLogs";
             this.btLLogs.Size = new System.Drawing.Size(69, 23);
-            this.btLLogs.TabIndex = 2;
+            this.btLLogs.TabIndex = 8;
             this.btLLogs.Text = "Logs";
             this.btLLogs.UseVisualStyleBackColor = true;
             this.btLLogs.Click += new System.EventHandler(this.BTLimparLogs);
@@ -1218,7 +1219,7 @@
             this.btArquivo.Location = new System.Drawing.Point(521, 313);
             this.btArquivo.Name = "btArquivo";
             this.btArquivo.Size = new System.Drawing.Size(68, 23);
-            this.btArquivo.TabIndex = 2;
+            this.btArquivo.TabIndex = 9;
             this.btArquivo.Text = "Arquivo";
             this.btArquivo.UseVisualStyleBackColor = true;
             this.btArquivo.Click += new System.EventHandler(this.BTSalvarArquivo);
@@ -1228,7 +1229,7 @@
             this.button2.Location = new System.Drawing.Point(595, 313);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(69, 23);
-            this.button2.TabIndex = 2;
+            this.button2.TabIndex = 10;
             this.button2.Text = "Salvar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.BTSalvar);
@@ -1240,7 +1241,7 @@
             this.groupBox9.Location = new System.Drawing.Point(5, 165);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(214, 65);
-            this.groupBox9.TabIndex = 9;
+            this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "PAF";
             // 
@@ -1259,7 +1260,7 @@
             this.groupBox15.Location = new System.Drawing.Point(5, 6);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(214, 91);
-            this.groupBox15.TabIndex = 10;
+            this.groupBox15.TabIndex = 0;
             this.groupBox15.TabStop = false;
             this.groupBox15.Text = "Serviço";
             // 
@@ -1290,7 +1291,7 @@
             this.groupBox10.Location = new System.Drawing.Point(6, 103);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(213, 58);
-            this.groupBox10.TabIndex = 10;
+            this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Serviço";
             // 
@@ -1299,7 +1300,7 @@
             this.txtBServPorta.Location = new System.Drawing.Point(111, 32);
             this.txtBServPorta.Name = "txtBServPorta";
             this.txtBServPorta.Size = new System.Drawing.Size(96, 20);
-            this.txtBServPorta.TabIndex = 0;
+            this.txtBServPorta.TabIndex = 1;
             // 
             // txtBServHost
             // 
@@ -1339,7 +1340,7 @@
             this.groupBox11.Location = new System.Drawing.Point(5, 236);
             this.groupBox11.Name = "groupBox11";
             this.groupBox11.Size = new System.Drawing.Size(214, 100);
-            this.groupBox11.TabIndex = 11;
+            this.groupBox11.TabIndex = 3;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Serviços Remotos";
             // 
@@ -1348,21 +1349,21 @@
             this.txtBSincRepPorta.Location = new System.Drawing.Point(112, 71);
             this.txtBSincRepPorta.Name = "txtBSincRepPorta";
             this.txtBSincRepPorta.Size = new System.Drawing.Size(96, 20);
-            this.txtBSincRepPorta.TabIndex = 0;
+            this.txtBSincRepPorta.TabIndex = 3;
             // 
             // txtBSincHostPorta
             // 
             this.txtBSincHostPorta.Location = new System.Drawing.Point(112, 32);
             this.txtBSincHostPorta.Name = "txtBSincHostPorta";
             this.txtBSincHostPorta.Size = new System.Drawing.Size(96, 20);
-            this.txtBSincHostPorta.TabIndex = 0;
+            this.txtBSincHostPorta.TabIndex = 1;
             // 
             // txtBSincRep
             // 
             this.txtBSincRep.Location = new System.Drawing.Point(6, 71);
             this.txtBSincRep.Name = "txtBSincRep";
             this.txtBSincRep.Size = new System.Drawing.Size(96, 20);
-            this.txtBSincRep.TabIndex = 0;
+            this.txtBSincRep.TabIndex = 2;
             // 
             // txtBSincHost
             // 
@@ -1407,7 +1408,7 @@
             this.groupBox12.Location = new System.Drawing.Point(225, 270);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(214, 66);
-            this.groupBox12.TabIndex = 12;
+            this.groupBox12.TabIndex = 6;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Módulos";
             // 
@@ -1420,7 +1421,7 @@
             this.groupBox13.Location = new System.Drawing.Point(225, 199);
             this.groupBox13.Name = "groupBox13";
             this.groupBox13.Size = new System.Drawing.Size(214, 65);
-            this.groupBox13.TabIndex = 13;
+            this.groupBox13.TabIndex = 5;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Conexão Tablets";
             // 
@@ -1429,7 +1430,7 @@
             this.txtBTabletPorta.Location = new System.Drawing.Point(112, 32);
             this.txtBTabletPorta.Name = "txtBTabletPorta";
             this.txtBTabletPorta.Size = new System.Drawing.Size(96, 20);
-            this.txtBTabletPorta.TabIndex = 0;
+            this.txtBTabletPorta.TabIndex = 1;
             // 
             // txtBTabletHost
             // 
@@ -1467,6 +1468,7 @@
             this.tabServ.Size = new System.Drawing.Size(670, 360);
             this.tabServ.TabIndex = 1;
             this.tabServ.Text = "Serviços";
+            this.toolTip.SetToolTip(this.tabServ, "Nesta aba iremos tratar dos serviços do sistema.");
             this.tabServ.UseVisualStyleBackColor = true;
             // 
             // groupBox7
@@ -1512,6 +1514,7 @@
             this.tabInf.Size = new System.Drawing.Size(670, 360);
             this.tabInf.TabIndex = 2;
             this.tabInf.Text = "Informações";
+            this.toolTip.SetToolTip(this.tabInf, "Nesta aba serão reunidas informações úteis sobre o ambiente.");
             this.tabInf.UseVisualStyleBackColor = true;
             // 
             // txtBoxRede
@@ -1521,7 +1524,7 @@
             this.txtBoxRede.Name = "txtBoxRede";
             this.txtBoxRede.ReadOnly = true;
             this.txtBoxRede.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtBoxRede.Size = new System.Drawing.Size(220, 67);
+            this.txtBoxRede.Size = new System.Drawing.Size(543, 153);
             this.txtBoxRede.TabIndex = 1;
             // 
             // txtNomePC

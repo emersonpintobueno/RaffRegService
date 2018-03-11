@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RaffRegServer.Classes
 {
@@ -15,6 +12,8 @@ namespace RaffRegServer.Classes
             return m;
         }
 
+        //*** Tá aqui o pau
+        /*
         public string ShowNetworkInterfaces()
         {
             string ret = "";
@@ -45,5 +44,6 @@ namespace RaffRegServer.Classes
             }
             return ret;
         }
+        */
     }
 }

@@ -9,8 +9,6 @@ using System.Windows.Forms;
 using System.ServiceProcess;
 using System.Diagnostics;
 using RaffRegServer.Classes;
-using System.Threading.Tasks;
-using Ionic.Zip;
 using ZipProgress;
 
 namespace RaffRegServer
@@ -22,12 +20,13 @@ namespace RaffRegServer
         Computador pc = new Computador();
         string pRaff;
 
+        
         public RaffRegServer()
         {
             InitializeComponent();
-            gServicosProcessos();
-            pRaff = PathRaffinato();
-            preencheDados();
+                gServicosProcessos();
+                pRaff = PathRaffinato();
+                preencheDados();
         }
 
         #region registro (referência apenas)
@@ -79,12 +78,30 @@ namespace RaffRegServer
 
         public void preencheDados()
         {
+            string[][] dadosRegistro = new string[30][];
+            try
+            {
+                dadosRegistro = reg.leRegistro();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocorreu um erro ao ler as entradas de registro.");
+            }
 
-            string[][] dadosRegistro = reg.leRegistro();
+            
 
             cmbHosts.Items.Clear();
             //Preenche box dos ips
-            List<string> ip = reg.CIPs();
+            List<string> ip = new List<string>();
+
+            try
+            {
+                ip = reg.CIPs();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocorreu um erro ao ler aos ips disponíveis.");
+            }
 
             foreach (string d in ip)
             {
@@ -214,7 +231,20 @@ namespace RaffRegServer
             //Campos da Aba de informações:
             //Nome do PC
             txtNomePC.Text = Environment.MachineName;
-            txtBoxRede.Text = pc.ShowNetworkInterfaces();
+            txtBoxRede.Text = reg.ShowNetworkInterfaces();
+
+            //Continuar daqui
+            /*string ips = "";
+            foreach (var item in reg.CIPs())
+            {
+                if (reg.Parse(item))
+                {
+                    ips += item +"\n";
+                    ips += "=================================\n";
+                }
+                
+            }*/
+            
 
         }
 
@@ -291,7 +321,15 @@ namespace RaffRegServer
             Color r = Color.Red;
             Color g = Color.Green;
 
-            getServices("MSSQL$SQL2014");
+            try
+            {
+                getServices("MSSQL$SQL2014");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Erro ao pegar os serviços do SQL.");
+            }
+            
 
             //Declarando a classe ServiceController e preenchendo um array com todos os serviços 
             //do windows usando o método GetServices()
@@ -302,7 +340,7 @@ namespace RaffRegServer
             else
                 lblPSQL.ForeColor = g;
 
-            if (getProcess("Integrador"))
+            if (GetProcess("Integrador"))
             {
                 lblPIntegrador.ForeColor = g;
                 lblPIntegrador.Text = "Executando";
@@ -313,7 +351,7 @@ namespace RaffRegServer
                 lblPIntegrador.Text = "Parado/Ausente";
             }
 
-            if (getProcess("QS"))
+            if (GetProcess("QS"))
             {
                 lblQuantum.ForeColor = g;
                 lblQuantum.Text = "Executando";
@@ -348,7 +386,7 @@ namespace RaffRegServer
             return false;
         }
 
-        public static bool getProcess(string processName)
+        public static bool GetProcess(string processName)
         {
             Process[] processos = Process.GetProcesses();
 
@@ -363,6 +401,7 @@ namespace RaffRegServer
 
         }
 
+        /*
         private void btPesqSQLRede(object sender, EventArgs e)
         {
             List<string> sqlRede = sql.PegarInstSQLRede();
@@ -375,7 +414,7 @@ namespace RaffRegServer
 
             MessageBox.Show(t);
         }
-
+        */
         //setar ip para todos
         private void BTtip(object sender, EventArgs e)
         {

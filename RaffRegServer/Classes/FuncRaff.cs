@@ -491,6 +491,93 @@ namespace RaffRegServer.Classes
             MessageBox.Show(sb.ToString());
         }
 
+        public Boolean Parse(string ipAddress)
+        {
+            bool isIp = false;
+            try
+            {
+                IPAddress address = IPAddress.Parse(ipAddress);
+                isIp = true;
+            }
+            catch (Exception)
+            {
+                //throw;
+            }
+            return isIp;
+
+        
+        }
+
+        public string ShowNetworkInterfaces()
+        {
+            string ret = "";
+            IPGlobalProperties computerProperties = IPGlobalProperties.GetIPGlobalProperties();
+            NetworkInterface[] nics = NetworkInterface.GetAllNetworkInterfaces();
+            if (nics == null || nics.Length < 1)
+            {
+                ret += "Não foram encontradas inferfaces de rede";
+                return ret;
+            }
+            foreach (NetworkInterface adapter in nics)
+            {
+                IPInterfaceProperties properties;
+                try
+                {
+                    properties = adapter.GetIPProperties();
+                }
+                catch (Exception)
+                {
+                    properties = null;
+                    MessageBox.Show("Erro ao recuperar as informações dos apaptadores de rede.");
+                }
+                try
+                {
+                    if (adapter.OperationalStatus.ToString().Equals("Up") 
+                        && adapter.NetworkInterfaceType != NetworkInterfaceType.Loopback
+                        && adapter.Supports(NetworkInterfaceComponent.IPv4) == true
+                        )
+                    {
+
+                        ret += adapter.Description.ToString() + ":";
+                        string mac = string.Join(":", (from z in adapter.GetPhysicalAddress().GetAddressBytes() select z.ToString("X2")).ToArray());
+                        ret += Environment.NewLine;
+                        ret += "MAC: " + mac;
+                        ret += Environment.NewLine;
+                        //ret += "IPV4: " + adapter.GetIPProperties().UnicastAddresses[1].Address;
+
+                        for (int i = 0; i < adapter.GetIPProperties().UnicastAddresses.Count; i++)
+                        {
+                            if ((adapter.GetIPProperties().UnicastAddresses[i].Address).ToString().Length <= 15)
+                            {
+                                ret += "IPV4: " + adapter.GetIPProperties().UnicastAddresses[i].Address;
+                                continue;
+                            }
+                            /*else
+                            {
+                                ret += "IPV6: " + adapter.GetIPProperties().UnicastAddresses[1].Address;
+                                ret += Environment.NewLine;
+                            }*/
+                        }
+                        
+                        ret += Environment.NewLine;
+                        //ret += "IPV6: " + adapter.GetIPProperties().UnicastAddresses[0].Address;
+                        //ret += Environment.NewLine;
+                        ret += (String.Empty.PadLeft(33, '='));
+                        ret += Environment.NewLine;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao recuperar as informações de um dos apaptadores de rede.\n\n" 
+                        + adapter.Name.ToString() + "\n\n" 
+                        + ex.ToString());
+                    //ret += "\n\n" + ex.ToString();
+                }
+                
+            }
+            return ret;
+        }
+
         public List<string> CIPs()
         {
             List<string> pIPS = new List<string>();
@@ -632,10 +719,12 @@ namespace RaffRegServer.Classes
 
         public void SalvarRegistro(RegistryKey chave, string pR, string tit, string vlr)
         {
+
             if (chave.OpenSubKey(pR) == null)
             {
                 chave.CreateSubKey(pR);
                 //MessageBox.Show("Não existe" + chave.OpenSubKey(pR));
+                
             }
             try
             {
@@ -655,12 +744,26 @@ namespace RaffRegServer.Classes
             if (Environment.Is64BitOperatingSystem)
             {
                 localKey = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry64)
+                .OpenSubKey(@"SOFTWARE\\Wow6432Node\\Raffinato 2009\\", true);
+
+                if (localKey == null)
+                {
+                    Registry.LocalMachine.CreateSubKey(@"SOFTWARE\\Wow6432Node\\Raffinato 2009\\");
+                    localKey = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry64)
                     .OpenSubKey(@"SOFTWARE\\Wow6432Node\\Raffinato 2009\\", true);
+                }
             }
             else
             {
                 localKey = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry32)
+                .OpenSubKey(@"SOFTWARE\\Raffinato 2009\\", true);
+
+                if (localKey == null)
+                {
+                    Registry.LocalMachine.CreateSubKey(@"SOFTWARE\\Raffinato 2009\\");
+                    localKey = RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, RegistryView.Registry32)
                     .OpenSubKey(@"SOFTWARE\\Raffinato 2009\\", true);
+                }
             }
 
             try
@@ -670,7 +773,7 @@ namespace RaffRegServer.Classes
                 SalvarRegistro(localKey, "Serviço", "Porta", dados[1], RegistryValueKind.DWord);
 
                 //PAF-ECF (porta)
-                SalvarRegistro(localKey, "PAF", "Porta", dados[2]);
+                SalvarRegistro(localKey, "PAF", "Porta", dados[2], RegistryValueKind.DWord);
 
                 //Sincronizador
                 SalvarRegistro(localKey, "Sincronizador", "Host", dados[3]);

@@ -69,15 +69,5 @@ namespace RaffRegServer.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_ferramentas_administrativas_40 {
-            get {
-                object obj = ResourceManager.GetObject("icons8_ferramentas_administrativas_40", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
