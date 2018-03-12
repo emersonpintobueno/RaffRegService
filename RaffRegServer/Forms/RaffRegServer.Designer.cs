@@ -102,17 +102,6 @@
             this.label32 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.txtBHostRetaguardaPorta = new System.Windows.Forms.TextBox();
-            this.txtBFilialImg = new System.Windows.Forms.TextBox();
-            this.txtBHostPDVPorta = new System.Windows.Forms.TextBox();
-            this.txtBHostRetaguarda = new System.Windows.Forms.TextBox();
-            this.txtBFilial = new System.Windows.Forms.TextBox();
-            this.txtBHostPDV = new System.Windows.Forms.TextBox();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
-            this.tabMain = new System.Windows.Forms.TabControl();
             this.tabReg = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.btSQLServico = new System.Windows.Forms.Button();
@@ -156,15 +145,26 @@
             this.txtBTabletHost = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.txtBHostRetaguardaPorta = new System.Windows.Forms.TextBox();
+            this.txtBFilialImg = new System.Windows.Forms.TextBox();
+            this.txtBHostPDVPorta = new System.Windows.Forms.TextBox();
+            this.txtBHostRetaguarda = new System.Windows.Forms.TextBox();
+            this.txtBFilial = new System.Windows.Forms.TextBox();
+            this.txtBHostPDV = new System.Windows.Forms.TextBox();
             this.tabServ = new System.Windows.Forms.TabPage();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.cmbSQL = new System.Windows.Forms.ComboBox();
             this.lblTeste = new System.Windows.Forms.Label();
+            this.button17 = new System.Windows.Forms.Button();
+            this.button16 = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.tabInf = new System.Windows.Forms.TabPage();
             this.txtBoxRede = new System.Windows.Forms.TextBox();
             this.txtNomePC = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.lblNomeDoComputador = new System.Windows.Forms.Label();
+            this.tabMain = new System.Windows.Forms.TabControl();
             this.procuraPasta = new System.Windows.Forms.FolderBrowserDialog();
             this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -173,8 +173,6 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox14.SuspendLayout();
-            this.tabMain.SuspendLayout();
             this.tabReg.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -183,9 +181,11 @@
             this.groupBox11.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox13.SuspendLayout();
+            this.groupBox14.SuspendLayout();
             this.tabServ.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.tabInf.SuspendLayout();
+            this.tabMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -494,9 +494,9 @@
             this.label44.AutoSize = true;
             this.label44.Location = new System.Drawing.Point(6, 55);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(94, 13);
+            this.label44.Size = new System.Drawing.Size(75, 13);
             this.label44.TabIndex = 0;
-            this.label44.Text = "Host (Retaguarda)";
+            this.label44.Text = "Servidor (Ret.)";
             this.toolTip.SetToolTip(this.label44, "Inserção do IP ou do identificador da máquina\r\nonde o Retaguarda irá conectar.");
             // 
             // label45
@@ -507,8 +507,8 @@
             this.label45.Size = new System.Drawing.Size(44, 13);
             this.label45.TabIndex = 0;
             this.label45.Text = "Imagem";
-            this.toolTip.SetToolTip(this.label45, "Irá procurar na pasta \\Imagens, uma quantidade de imagens\r\nIgual ao número aqui d" +
-        "escrito.");
+            this.toolTip.SetToolTip(this.label45, "São as imagens utilizadas para os produtos. O sistema irá procurar na pasta \\Imag" +
+        "ens, uma quantidade de imagens\r\nIgual ao número aqui descrito.");
             // 
             // label46
             // 
@@ -518,7 +518,7 @@
             this.label46.Size = new System.Drawing.Size(27, 13);
             this.label46.TabIndex = 0;
             this.label46.Text = "Filial";
-            this.toolTip.SetToolTip(this.label46, "Filial.\r\nIdentificação da filial do sistema.");
+            this.toolTip.SetToolTip(this.label46, "Filial. \r\nIdentificação da filial do sistema.\r\n");
             // 
             // label47
             // 
@@ -535,9 +535,9 @@
             this.label48.AutoSize = true;
             this.label48.Location = new System.Drawing.Point(6, 16);
             this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(60, 13);
+            this.label48.Size = new System.Drawing.Size(77, 13);
             this.label48.TabIndex = 0;
-            this.label48.Text = "Host (PDV)";
+            this.label48.Text = "Servidor (PDV)";
             this.toolTip.SetToolTip(this.label48, "Inserção do IP ou do identificador da máquina\r\nonde o PDV (Frente de Caixa) irá c" +
         "onectar. \r\nMáquina onde estará rodando o servidor.exe.");
             // 
@@ -831,8 +831,8 @@
             this.label28.Size = new System.Drawing.Size(108, 13);
             this.label28.TabIndex = 0;
             this.label28.Text = "Servidor (Consultado)";
-            this.toolTip.SetToolTip(this.label28, "Nome da base de dados do Raffinato.\r\nCaso este campo seja deixado em branco,\r\nser" +
-        "á criada uma base de dados nova para o \r\ncliente.");
+            this.toolTip.SetToolTip(this.label28, "Endereço do servidor consultado no registro do windows.\r\nPor padrão normalmente é" +
+        " o nome da máquina.");
             // 
             // chBoxLog
             // 
@@ -907,16 +907,16 @@
             this.label32.Size = new System.Drawing.Size(32, 13);
             this.label32.TabIndex = 0;
             this.label32.Text = "Porta";
-            this.toolTip.SetToolTip(this.label32, "Porta utilizada pelo PAF/ECF.");
+            this.toolTip.SetToolTip(this.label32, "Porta utilizada pelo PAF/ECF (padrão 10002).");
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(3, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(85, 13);
+            this.label7.Size = new System.Drawing.Size(113, 13);
             this.label7.TabIndex = 0;
-            this.label7.Text = "Host detectados";
+            this.label7.Text = "Servidores detectados";
             this.toolTip.SetToolTip(this.label7, "Hosts (endereços), detectados que podem \r\nser usados para os serviços da Raffinat" +
         "o.\r\n");
             // 
@@ -930,109 +930,6 @@
             this.label38.Text = "Sincronizador";
             this.toolTip.SetToolTip(this.label38, "Endereço para utilização do sincronizador.\r\nSincronizador é o serviço que mantém " +
         "a conexão \r\nentre dois servidores SQL, normalmente através de \r\numa VPN.");
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.chMWeb);
-            this.groupBox14.Controls.Add(this.chTouch);
-            this.groupBox14.Controls.Add(this.txtBHostRetaguardaPorta);
-            this.groupBox14.Controls.Add(this.txtBFilialImg);
-            this.groupBox14.Controls.Add(this.txtBHostPDVPorta);
-            this.groupBox14.Controls.Add(this.txtBHostRetaguarda);
-            this.groupBox14.Controls.Add(this.txtBFilial);
-            this.groupBox14.Controls.Add(this.txtBHostPDV);
-            this.groupBox14.Controls.Add(this.label42);
-            this.groupBox14.Controls.Add(this.label44);
-            this.groupBox14.Controls.Add(this.label45);
-            this.groupBox14.Controls.Add(this.label46);
-            this.groupBox14.Controls.Add(this.label47);
-            this.groupBox14.Controls.Add(this.label48);
-            this.groupBox14.Location = new System.Drawing.Point(225, 6);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(214, 185);
-            this.groupBox14.TabIndex = 4;
-            this.groupBox14.TabStop = false;
-            this.groupBox14.Text = "Conexão";
-            // 
-            // txtBHostRetaguardaPorta
-            // 
-            this.txtBHostRetaguardaPorta.Location = new System.Drawing.Point(112, 71);
-            this.txtBHostRetaguardaPorta.Name = "txtBHostRetaguardaPorta";
-            this.txtBHostRetaguardaPorta.Size = new System.Drawing.Size(96, 20);
-            this.txtBHostRetaguardaPorta.TabIndex = 3;
-            // 
-            // txtBFilialImg
-            // 
-            this.txtBFilialImg.Location = new System.Drawing.Point(112, 110);
-            this.txtBFilialImg.Name = "txtBFilialImg";
-            this.txtBFilialImg.Size = new System.Drawing.Size(96, 20);
-            this.txtBFilialImg.TabIndex = 5;
-            // 
-            // txtBHostPDVPorta
-            // 
-            this.txtBHostPDVPorta.Location = new System.Drawing.Point(112, 32);
-            this.txtBHostPDVPorta.Name = "txtBHostPDVPorta";
-            this.txtBHostPDVPorta.Size = new System.Drawing.Size(96, 20);
-            this.txtBHostPDVPorta.TabIndex = 1;
-            // 
-            // txtBHostRetaguarda
-            // 
-            this.txtBHostRetaguarda.Location = new System.Drawing.Point(6, 71);
-            this.txtBHostRetaguarda.Name = "txtBHostRetaguarda";
-            this.txtBHostRetaguarda.Size = new System.Drawing.Size(96, 20);
-            this.txtBHostRetaguarda.TabIndex = 2;
-            // 
-            // txtBFilial
-            // 
-            this.txtBFilial.Location = new System.Drawing.Point(6, 110);
-            this.txtBFilial.Name = "txtBFilial";
-            this.txtBFilial.Size = new System.Drawing.Size(96, 20);
-            this.txtBFilial.TabIndex = 4;
-            // 
-            // txtBHostPDV
-            // 
-            this.txtBHostPDV.Location = new System.Drawing.Point(6, 32);
-            this.txtBHostPDV.Name = "txtBHostPDV";
-            this.txtBHostPDV.Size = new System.Drawing.Size(96, 20);
-            this.txtBHostPDV.TabIndex = 0;
-            // 
-            // button17
-            // 
-            this.button17.Location = new System.Drawing.Point(273, 55);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(49, 23);
-            this.button17.TabIndex = 2;
-            this.button17.Text = "Parar";
-            this.button17.UseVisualStyleBackColor = true;
-            // 
-            // button16
-            // 
-            this.button16.Location = new System.Drawing.Point(218, 55);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(49, 23);
-            this.button16.TabIndex = 2;
-            this.button16.Text = "Iniciar";
-            this.button16.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 41);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(28, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "SQL";
-            // 
-            // tabMain
-            // 
-            this.tabMain.Controls.Add(this.tabReg);
-            this.tabMain.Controls.Add(this.tabServ);
-            this.tabMain.Controls.Add(this.tabInf);
-            this.tabMain.Location = new System.Drawing.Point(12, 41);
-            this.tabMain.Name = "tabMain";
-            this.tabMain.SelectedIndex = 0;
-            this.tabMain.Size = new System.Drawing.Size(678, 386);
-            this.tabMain.TabIndex = 0;
             // 
             // tabReg
             // 
@@ -1085,6 +982,9 @@
             this.groupBox8.TabIndex = 7;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Servidor";
+            this.toolTip.SetToolTip(this.groupBox8, "Dados referentes ao servidor SQL que controla a base de dados.\r\nEstas configuraçõ" +
+        "es aplicam-se apenas a máquina local quando houver\r\nnecessidade de configurações" +
+        " dos servidores do SQL Express.\r\n");
             // 
             // btSQLServico
             // 
@@ -1150,6 +1050,8 @@
             this.label14.Size = new System.Drawing.Size(96, 13);
             this.label14.TabIndex = 0;
             this.label14.Text = "Inst. (Descobertas)";
+            this.toolTip.SetToolTip(this.label14, "Aqui estão relacionadas todas as instâncias do SQL Express\r\ndescobertas no comput" +
+        "ador.");
             // 
             // txtBServMicro
             // 
@@ -1163,9 +1065,11 @@
             this.label30.AutoSize = true;
             this.label30.Location = new System.Drawing.Point(6, 17);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(77, 13);
+            this.label30.Size = new System.Drawing.Size(94, 13);
             this.label30.TabIndex = 0;
-            this.label30.Text = "Host (Registro)";
+            this.label30.Text = "Servidor (Registro)";
+            this.toolTip.SetToolTip(this.label30, "Endereço do servidor do SQL, lido a partir das configurações\r\noriginais do regist" +
+        "ro.");
             // 
             // label31
             // 
@@ -1175,6 +1079,7 @@
             this.label31.Size = new System.Drawing.Size(32, 13);
             this.label31.TabIndex = 0;
             this.label31.Text = "Porta";
+            this.toolTip.SetToolTip(this.label31, "Porta do servidor que está em uso atualmente no registro.");
             // 
             // txtTimeoutQuery
             // 
@@ -1244,6 +1149,7 @@
             this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "PAF";
+            this.toolTip.SetToolTip(this.groupBox9, "Reúne as informações necessários referentes a execução dos aplicativos PAF");
             // 
             // txtBPAFPorta
             // 
@@ -1262,7 +1168,8 @@
             this.groupBox15.Size = new System.Drawing.Size(214, 91);
             this.groupBox15.TabIndex = 0;
             this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Serviço";
+            this.groupBox15.Text = "Servidores";
+            this.toolTip.SetToolTip(this.groupBox15, "Detecta os servidores disponíveis para utilização com o Raffinato.");
             // 
             // button1
             // 
@@ -1271,6 +1178,7 @@
             this.button1.Size = new System.Drawing.Size(96, 23);
             this.button1.TabIndex = 2;
             this.button1.Text = "Usar";
+            this.toolTip.SetToolTip(this.button1, "Usa o servidor selecionado.");
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.BTtip);
             // 
@@ -1294,6 +1202,7 @@
             this.groupBox10.TabIndex = 1;
             this.groupBox10.TabStop = false;
             this.groupBox10.Text = "Serviço";
+            this.toolTip.SetToolTip(this.groupBox10, "Refere-se ao executável Serviço.exe do Raffinato, ");
             // 
             // txtBServPorta
             // 
@@ -1317,15 +1226,17 @@
             this.label33.Size = new System.Drawing.Size(32, 13);
             this.label33.TabIndex = 0;
             this.label33.Text = "Porta";
+            this.toolTip.SetToolTip(this.label33, "Porta do endereço onde o serviço será executado (padrão 10001).");
             // 
             // label34
             // 
             this.label34.AutoSize = true;
             this.label34.Location = new System.Drawing.Point(6, 16);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(29, 13);
+            this.label34.Size = new System.Drawing.Size(53, 13);
             this.label34.TabIndex = 0;
-            this.label34.Text = "Host";
+            this.label34.Text = "Endereço";
+            this.toolTip.SetToolTip(this.label34, "Endereço onde o serviço será executado.");
             // 
             // groupBox11
             // 
@@ -1343,6 +1254,8 @@
             this.groupBox11.TabIndex = 3;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "Serviços Remotos";
+            this.toolTip.SetToolTip(this.groupBox11, "Refere-se a serviços que são executados remotamente, normalmente através de VPN, " +
+        "Wan ou Man).");
             // 
             // txtBSincRepPorta
             // 
@@ -1380,6 +1293,7 @@
             this.lblSincPorta.Size = new System.Drawing.Size(32, 13);
             this.lblSincPorta.TabIndex = 0;
             this.lblSincPorta.Text = "Porta";
+            this.toolTip.SetToolTip(this.lblSincPorta, "Porta que o serviço de replicação irá conectar (padrão 10100).");
             // 
             // label36
             // 
@@ -1389,6 +1303,8 @@
             this.label36.Size = new System.Drawing.Size(58, 13);
             this.label36.TabIndex = 0;
             this.label36.Text = "Replicador";
+            this.toolTip.SetToolTip(this.label36, "Refere-se ao endereço onde o Replicador de dados irá conectar. O replicador é o s" +
+        "erviço responsável por sincronizar as informações com um servidor centralizado.");
             // 
             // label37
             // 
@@ -1398,6 +1314,7 @@
             this.label37.Size = new System.Drawing.Size(32, 13);
             this.label37.TabIndex = 0;
             this.label37.Text = "Porta";
+            this.toolTip.SetToolTip(this.label37, "Porta para utilização do sincronizador (padrão 10100).");
             // 
             // groupBox12
             // 
@@ -1411,6 +1328,7 @@
             this.groupBox12.TabIndex = 6;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Módulos";
+            this.toolTip.SetToolTip(this.groupBox12, "Liberação dos módulos adicionais do Raffinato.");
             // 
             // groupBox13
             // 
@@ -1424,6 +1342,8 @@
             this.groupBox13.TabIndex = 5;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Conexão Tablets";
+            this.toolTip.SetToolTip(this.groupBox13, "Refere-se as configurações necessárias para a conexão de tablets que utilizam o m" +
+        "ódulo GamaTec.");
             // 
             // txtBTabletPorta
             // 
@@ -1447,15 +1367,82 @@
             this.label39.Size = new System.Drawing.Size(32, 13);
             this.label39.TabIndex = 0;
             this.label39.Text = "Porta";
+            this.toolTip.SetToolTip(this.label39, "Porta utilizada para a conexão dos tablets (padrão 10050).");
             // 
             // label40
             // 
             this.label40.AutoSize = true;
             this.label40.Location = new System.Drawing.Point(6, 16);
             this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(29, 13);
+            this.label40.Size = new System.Drawing.Size(46, 13);
             this.label40.TabIndex = 0;
-            this.label40.Text = "Host";
+            this.label40.Text = "Servidor";
+            this.toolTip.SetToolTip(this.label40, "Endereço do servidor onde os tablets irão se conectar.");
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.chMWeb);
+            this.groupBox14.Controls.Add(this.chTouch);
+            this.groupBox14.Controls.Add(this.txtBHostRetaguardaPorta);
+            this.groupBox14.Controls.Add(this.txtBFilialImg);
+            this.groupBox14.Controls.Add(this.txtBHostPDVPorta);
+            this.groupBox14.Controls.Add(this.txtBHostRetaguarda);
+            this.groupBox14.Controls.Add(this.txtBFilial);
+            this.groupBox14.Controls.Add(this.txtBHostPDV);
+            this.groupBox14.Controls.Add(this.label42);
+            this.groupBox14.Controls.Add(this.label44);
+            this.groupBox14.Controls.Add(this.label45);
+            this.groupBox14.Controls.Add(this.label46);
+            this.groupBox14.Controls.Add(this.label47);
+            this.groupBox14.Controls.Add(this.label48);
+            this.groupBox14.Location = new System.Drawing.Point(225, 6);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(214, 185);
+            this.groupBox14.TabIndex = 4;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Conexão";
+            // 
+            // txtBHostRetaguardaPorta
+            // 
+            this.txtBHostRetaguardaPorta.Location = new System.Drawing.Point(112, 71);
+            this.txtBHostRetaguardaPorta.Name = "txtBHostRetaguardaPorta";
+            this.txtBHostRetaguardaPorta.Size = new System.Drawing.Size(96, 20);
+            this.txtBHostRetaguardaPorta.TabIndex = 3;
+            // 
+            // txtBFilialImg
+            // 
+            this.txtBFilialImg.Location = new System.Drawing.Point(112, 110);
+            this.txtBFilialImg.Name = "txtBFilialImg";
+            this.txtBFilialImg.Size = new System.Drawing.Size(96, 20);
+            this.txtBFilialImg.TabIndex = 5;
+            // 
+            // txtBHostPDVPorta
+            // 
+            this.txtBHostPDVPorta.Location = new System.Drawing.Point(112, 32);
+            this.txtBHostPDVPorta.Name = "txtBHostPDVPorta";
+            this.txtBHostPDVPorta.Size = new System.Drawing.Size(96, 20);
+            this.txtBHostPDVPorta.TabIndex = 1;
+            // 
+            // txtBHostRetaguarda
+            // 
+            this.txtBHostRetaguarda.Location = new System.Drawing.Point(6, 71);
+            this.txtBHostRetaguarda.Name = "txtBHostRetaguarda";
+            this.txtBHostRetaguarda.Size = new System.Drawing.Size(96, 20);
+            this.txtBHostRetaguarda.TabIndex = 2;
+            // 
+            // txtBFilial
+            // 
+            this.txtBFilial.Location = new System.Drawing.Point(6, 110);
+            this.txtBFilial.Name = "txtBFilial";
+            this.txtBFilial.Size = new System.Drawing.Size(96, 20);
+            this.txtBFilial.TabIndex = 4;
+            // 
+            // txtBHostPDV
+            // 
+            this.txtBHostPDV.Location = new System.Drawing.Point(6, 32);
+            this.txtBHostPDV.Name = "txtBHostPDV";
+            this.txtBHostPDV.Size = new System.Drawing.Size(96, 20);
+            this.txtBHostPDV.TabIndex = 0;
             // 
             // tabServ
             // 
@@ -1502,6 +1489,33 @@
             this.lblTeste.Size = new System.Drawing.Size(208, 29);
             this.lblTeste.TabIndex = 1;
             this.lblTeste.Text = "Editor de Registro";
+            // 
+            // button17
+            // 
+            this.button17.Location = new System.Drawing.Point(273, 55);
+            this.button17.Name = "button17";
+            this.button17.Size = new System.Drawing.Size(49, 23);
+            this.button17.TabIndex = 2;
+            this.button17.Text = "Parar";
+            this.button17.UseVisualStyleBackColor = true;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(218, 55);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(49, 23);
+            this.button16.TabIndex = 2;
+            this.button16.Text = "Iniciar";
+            this.button16.UseVisualStyleBackColor = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 41);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(28, 13);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "SQL";
             // 
             // tabInf
             // 
@@ -1553,6 +1567,17 @@
             this.lblNomeDoComputador.TabIndex = 0;
             this.lblNomeDoComputador.Text = "Nome do Computador:";
             // 
+            // tabMain
+            // 
+            this.tabMain.Controls.Add(this.tabReg);
+            this.tabMain.Controls.Add(this.tabServ);
+            this.tabMain.Controls.Add(this.tabInf);
+            this.tabMain.Location = new System.Drawing.Point(12, 41);
+            this.tabMain.Name = "tabMain";
+            this.tabMain.SelectedIndex = 0;
+            this.tabMain.Size = new System.Drawing.Size(678, 386);
+            this.tabMain.TabIndex = 0;
+            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -1585,9 +1610,6 @@
             this.groupBox4.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
-            this.tabMain.ResumeLayout(false);
             this.tabReg.ResumeLayout(false);
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
@@ -1603,11 +1625,14 @@
             this.groupBox12.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
             this.tabServ.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
             this.tabInf.ResumeLayout(false);
             this.tabInf.PerformLayout();
+            this.tabMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
