@@ -1116,6 +1116,7 @@
             this.btLLogs.Size = new System.Drawing.Size(69, 23);
             this.btLLogs.TabIndex = 8;
             this.btLLogs.Text = "Logs";
+            this.toolTip.SetToolTip(this.btLLogs, "Limpar e compactar a pasta de logs.");
             this.btLLogs.UseVisualStyleBackColor = true;
             this.btLLogs.Click += new System.EventHandler(this.BTLimparLogs);
             // 
@@ -1126,6 +1127,7 @@
             this.btArquivo.Size = new System.Drawing.Size(68, 23);
             this.btArquivo.TabIndex = 9;
             this.btArquivo.Text = "Arquivo";
+            this.toolTip.SetToolTip(this.btArquivo, "Gera um arquivo com as configurações do sistema.");
             this.btArquivo.UseVisualStyleBackColor = true;
             this.btArquivo.Click += new System.EventHandler(this.BTSalvarArquivo);
             // 
@@ -1136,6 +1138,7 @@
             this.button2.Size = new System.Drawing.Size(69, 23);
             this.button2.TabIndex = 10;
             this.button2.Text = "Salvar";
+            this.toolTip.SetToolTip(this.button2, "Salva as configurações para o registro.");
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.BTSalvar);
             // 
@@ -1766,7 +1769,6 @@
         private System.Windows.Forms.ComboBox cmBSQLServico;
         private System.Windows.Forms.ComboBox cmbSQLArquivo;
         private System.Windows.Forms.Button btConsulta;
-        private System.Windows.Forms.Button btSQLServico;
         private System.Windows.Forms.Label lblNomeDoComputador;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox txtNomePC;
@@ -1776,6 +1778,7 @@
         private System.Windows.Forms.Button btLLogs;
         private System.Windows.Forms.FolderBrowserDialog procuraPasta;
         private System.Windows.Forms.Label label18;
+        public System.Windows.Forms.Button btSQLServico;
     }
 }
 

@@ -10,6 +10,7 @@ using System.ServiceProcess;
 using System.Diagnostics;
 using RaffRegServer.Classes;
 using ZipProgress;
+using System.Threading;
 
 namespace RaffRegServer
 {
@@ -401,20 +402,6 @@ namespace RaffRegServer
 
         }
 
-        /*
-        private void btPesqSQLRede(object sender, EventArgs e)
-        {
-            List<string> sqlRede = sql.PegarInstSQLRede();
-            string t = "";
-
-            for (int i = 0; i < sqlRede.Count; i++)
-            {
-                t += sqlRede[i].ToString() + "\n";
-            }
-
-            MessageBox.Show(t);
-        }
-        */
         //setar ip para todos
         private void BTtip(object sender, EventArgs e)
         {
@@ -461,14 +448,18 @@ namespace RaffRegServer
                     {
                         try
                         {
-                            IPSql();
+                            
+                            while (!IPSql())
+                            {
+                                BTIniciarPararSQL(sender, e);
+                            }
                             servers = sql.PegarListaBases(txtBSQLHost.Text);
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show("Não foi possível iniciar o SQL\n" +
                                 "O erro retornado foi:\n" + ex, "Erro ao iniciar", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            throw;
+                            //throw;
                         }
 
                     }
@@ -498,11 +489,12 @@ namespace RaffRegServer
             }
         }
 
-        private void IPSql()
+        //Seta o nome do botão de acordo com o status do serviço do sql.
+        public bool IPSql()
         {
             string nS = cmBSQLServico.SelectedItem.ToString();
             ServiceController sc = new ServiceController();
-
+            bool st = false;
             try
             {
                 sc = new ServiceController(nS);
@@ -510,56 +502,32 @@ namespace RaffRegServer
             catch (ArgumentException)
             {
                 MessageBox.Show("Serviço do SQL não encontrado");
+                st=false;
             }
 
             if (sc.Status == ServiceControllerStatus.Running)
             {
-                btSQLServico.Text = "Parar";
-                try
-                {
-                    sc.Stop();
-                    while (sc.Status != ServiceControllerStatus.Stopped)
-                    {
-                        btSQLServico.Text = "Parando";
-                        sc.WaitForStatus(ServiceControllerStatus.Stopped);
-                        sc.Refresh();
-                    }
-                    btSQLServico.Text = "Iniciar";
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro:" + ex);
-                    throw;
-                }
+                btSQLServico.Text = "Executando";
+                st = true;
             }
 
             else
             {
-                btSQLServico.Text = "Iniciar";
-                try
-                {
-                    sc.Start();
-                    while (sc.Status != ServiceControllerStatus.Running)
-                    {
-                        btSQLServico.Text = "Iniciando";
-                        sc.WaitForStatus(ServiceControllerStatus.Running);
-                        sc.Refresh();
-                    }
-                    btSQLServico.Text = "Parar";
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro:" + ex);
-                    throw;
-                }
+                btSQLServico.Text = "Parado";
+                st = false;
             }
+            return st;
         }
+
 
         private void BTIniciarPararSQL(object sender, EventArgs e)
         {
-            //IPSql();
+            IPSql();
             string nS = cmBSQLServico.SelectedItem.ToString();
+
             LoadForm c = new LoadForm(nS);
+            c.StartPosition = FormStartPosition.CenterScreen;
+            //c.Invoke((MethodInvoker)(() => c.Show()));
             c.Show();
         }
 

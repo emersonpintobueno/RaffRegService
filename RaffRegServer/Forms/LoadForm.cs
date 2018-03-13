@@ -1,38 +1,29 @@
 ﻿using System;
 using System.ServiceProcess;
+using System.Threading;
 using System.Windows.Forms;
 using RaffRegServer.Classes;
 
 
 namespace RaffRegServer
 {
+    
     public partial class LoadForm : Form
     {
         string servico;
-        private static System.Timers.Timer m;
         registro reg = new registro();
         public LoadForm(string servico)
         {
             this.servico = servico;
             InitializeComponent();
-            Rel();
-            MServico();
+            Iniciar();
         }
 
-        public void Rel()
+        private void Iniciar()
         {
-            m = new System.Timers.Timer();
-            m.Interval = 1000;
-            m.Elapsed += MTimer;
-            m.AutoReset = true;
-            m.Enabled = true;
+            Thread t = new Thread(()=>MServico());
+            t.Start();
         }
-
-        public void MTimer(Object source, System.Timers.ElapsedEventArgs e)
-        {
-
-        }
-
 
         private ServiceController SC()
         {
@@ -47,31 +38,33 @@ namespace RaffRegServer
             }
             return sc;
         }
-        //private void Monitor(Object source, System.Timers.ElapsedEventArgs e)
+
+        
 
         private void MServico()
         {
+            RaffRegServer r = (RaffRegServer)Application.OpenForms["RaffRegServer"];
+
             ServiceController sc = reg.SC(servico);
-
+            int s = 25;
             ServiceControllerStatus scSt = sc.Status;
-
             if (sc.Status == ServiceControllerStatus.Running)
             {
-                //lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Aguarde. Parando o Serviço"));
-                lblStatus.Text = "Aguarde. Parando o Serviço";
+                lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Aguarde. Parando o Serviço"));
+                bProgresso.Invoke((MethodInvoker)(() => bProgresso.MarqueeAnimationSpeed=s));
+                this.Invoke((MethodInvoker)(() => this.Text = "Parando o serviço."));
                 try
                 {
                     sc.Stop();
                     while (sc.Status != ServiceControllerStatus.Stopped)
                     {
-                        //lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Parando..."));
-                        lblStatus.Text = "Parando...";
+                        lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Parando..."));
                         sc.WaitForStatus(ServiceControllerStatus.Stopped);
                         sc.Refresh();
                     }
-                    //lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Serviço Parado com Sucesso!"));
-                    lblStatus.Text = "Serviço Parado com Sucesso!";
-                    
+                    lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Serviço parado com sucesso."));
+                    r.btSQLServico.Invoke((MethodInvoker)(() => r.btSQLServico.Text = "Parado"));
+                    this.Invoke((MethodInvoker)(() => this.Dispose()));
                 }
                 catch (Exception ex)
                 {
@@ -81,19 +74,21 @@ namespace RaffRegServer
 
             else
             {
-                //lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Aguarde. Iniciando o Serviço SQL..."));
-                lblStatus.Text = "Aguarde. Iniciando o Serviço SQL...";
+                lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Aguarde. Iniciando o Serviço SQL..."));
+                bProgresso.Invoke((MethodInvoker)(() => bProgresso.MarqueeAnimationSpeed = s));
+                this.Invoke((MethodInvoker)(() => this.Text = "Iniciando o serviço."));
                 try
                 {
                     sc.Start();
                     while (sc.Status != ServiceControllerStatus.Running)
                     {
-                        //lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Iniciando..."));
-                        lblStatus.Text = "Iniciando...";
+                        lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Iniciando..."));
                         sc.WaitForStatus(ServiceControllerStatus.Running);
                         sc.Refresh();
                     }
-                    //lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Serviço iniciado com sucesso."));
+                    lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Serviço iniciado com sucesso."));
+                    r.btSQLServico.Invoke((MethodInvoker)(() => r.btSQLServico.Text = "Executando"));
+                    this.Invoke((MethodInvoker)(() => this.Dispose()));
                 }
                 catch (Exception ex)
                 {

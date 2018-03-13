@@ -37,7 +37,7 @@
             this.bProgresso.Location = new System.Drawing.Point(12, 37);
             this.bProgresso.Name = "bProgresso";
             this.bProgresso.Size = new System.Drawing.Size(251, 23);
-            this.bProgresso.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.bProgresso.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
             this.bProgresso.TabIndex = 0;
             // 
             // lblStatus
@@ -58,7 +58,9 @@
             this.Controls.Add(this.bProgresso);
             this.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.Name = "LoadForm";
+            this.ShowInTaskbar = false;
             this.Text = "Aguarde Carregando...";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
