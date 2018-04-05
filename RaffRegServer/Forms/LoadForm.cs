@@ -74,7 +74,15 @@ namespace RaffRegServer
 
             else
             {
-                lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Aguarde. Iniciando o Serviço SQL..."));
+                if (lblStatus.InvokeRequired)
+                {
+                    lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Aguarde. Iniciando o Serviço SQL..."));
+                }
+                else
+                {
+                    lblStatus.Text = "Aguarde. Iniciando o Serviço SQL...";
+                }
+                
                 bProgresso.Invoke((MethodInvoker)(() => bProgresso.MarqueeAnimationSpeed = s));
                 this.Invoke((MethodInvoker)(() => this.Text = "Iniciando o serviço."));
                 try
@@ -87,7 +95,7 @@ namespace RaffRegServer
                         sc.Refresh();
                     }
                     lblStatus.Invoke((MethodInvoker)(() => lblStatus.Text = "Serviço iniciado com sucesso."));
-                    r.btSQLServico.Invoke((MethodInvoker)(() => r.btSQLServico.Text = "Executando"));
+                    r.btSQLServico.Invoke((MethodInvoker)(() => r.btSQLServico.Text = "Iniciado"));
                     this.Invoke((MethodInvoker)(() => this.Dispose()));
                 }
                 catch (Exception ex)

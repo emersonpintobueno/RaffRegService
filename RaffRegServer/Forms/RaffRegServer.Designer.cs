@@ -36,13 +36,14 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.tBRaffinato = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.lblPSQL = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lblPSincronizador = new System.Windows.Forms.Label();
+            this.lblPServidor = new System.Windows.Forms.Label();
+            this.lblPServico = new System.Windows.Forms.Label();
+            this.lblPReplicador = new System.Windows.Forms.Label();
             this.lblQuantum = new System.Windows.Forms.Label();
             this.lblPIntegrador = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -64,24 +65,18 @@
             this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button15 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button14 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.btSincronizador = new System.Windows.Forms.Button();
+            this.btServidor = new System.Windows.Forms.Button();
+            this.btServico = new System.Windows.Forms.Button();
+            this.btReplicador = new System.Windows.Forms.Button();
+            this.btQuantum = new System.Windows.Forms.Button();
+            this.btIntegrador = new System.Windows.Forms.Button();
+            this.txtSincronizador = new System.Windows.Forms.TextBox();
+            this.txtServidor = new System.Windows.Forms.TextBox();
+            this.txtServico = new System.Windows.Forms.TextBox();
+            this.txtReplicador = new System.Windows.Forms.TextBox();
+            this.txtQuantum = new System.Windows.Forms.TextBox();
+            this.txtIntegrador = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -153,12 +148,6 @@
             this.txtBFilial = new System.Windows.Forms.TextBox();
             this.txtBHostPDV = new System.Windows.Forms.TextBox();
             this.tabServ = new System.Windows.Forms.TabPage();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.cmbSQL = new System.Windows.Forms.ComboBox();
-            this.lblTeste = new System.Windows.Forms.Label();
-            this.button17 = new System.Windows.Forms.Button();
-            this.button16 = new System.Windows.Forms.Button();
-            this.label11 = new System.Windows.Forms.Label();
             this.tabInf = new System.Windows.Forms.TabPage();
             this.txtBoxRede = new System.Windows.Forms.TextBox();
             this.txtNomePC = new System.Windows.Forms.TextBox();
@@ -183,7 +172,6 @@
             this.groupBox13.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.tabServ.SuspendLayout();
-            this.groupBox7.SuspendLayout();
             this.tabInf.SuspendLayout();
             this.tabMain.SuspendLayout();
             this.SuspendLayout();
@@ -235,6 +223,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button4);
             this.groupBox3.Controls.Add(this.button3);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
@@ -245,11 +234,21 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Monitoramento";
             // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(195, 239);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(111, 23);
+            this.button4.TabIndex = 2;
+            this.button4.Text = "Atualizar Status";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.BtAtualizarStatus);
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(6, 239);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(127, 23);
+            this.button3.Size = new System.Drawing.Size(183, 23);
             this.button3.TabIndex = 2;
             this.button3.Text = "Instalar Monitorador";
             this.button3.UseVisualStyleBackColor = true;
@@ -257,10 +256,10 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.lblPSQL);
-            this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.label12);
-            this.groupBox5.Controls.Add(this.label10);
-            this.groupBox5.Controls.Add(this.label8);
+            this.groupBox5.Controls.Add(this.lblPSincronizador);
+            this.groupBox5.Controls.Add(this.lblPServidor);
+            this.groupBox5.Controls.Add(this.lblPServico);
+            this.groupBox5.Controls.Add(this.lblPReplicador);
             this.groupBox5.Controls.Add(this.lblQuantum);
             this.groupBox5.Controls.Add(this.lblPIntegrador);
             this.groupBox5.Location = new System.Drawing.Point(195, 19);
@@ -281,49 +280,49 @@
             this.lblPSQL.TabIndex = 0;
             this.lblPSQL.Text = "Em Execução";
             // 
-            // label13
+            // lblPSincronizador
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Green;
-            this.label13.Location = new System.Drawing.Point(6, 168);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(73, 13);
-            this.label13.TabIndex = 0;
-            this.label13.Text = "Em Execução";
+            this.lblPSincronizador.AutoSize = true;
+            this.lblPSincronizador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPSincronizador.ForeColor = System.Drawing.Color.Green;
+            this.lblPSincronizador.Location = new System.Drawing.Point(6, 168);
+            this.lblPSincronizador.Name = "lblPSincronizador";
+            this.lblPSincronizador.Size = new System.Drawing.Size(73, 13);
+            this.lblPSincronizador.TabIndex = 0;
+            this.lblPSincronizador.Text = "Em Execução";
             // 
-            // label12
+            // lblPServidor
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Green;
-            this.label12.Location = new System.Drawing.Point(6, 145);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(73, 13);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Em Execução";
+            this.lblPServidor.AutoSize = true;
+            this.lblPServidor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPServidor.ForeColor = System.Drawing.Color.Green;
+            this.lblPServidor.Location = new System.Drawing.Point(6, 145);
+            this.lblPServidor.Name = "lblPServidor";
+            this.lblPServidor.Size = new System.Drawing.Size(73, 13);
+            this.lblPServidor.TabIndex = 0;
+            this.lblPServidor.Text = "Em Execução";
             // 
-            // label10
+            // lblPServico
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Green;
-            this.label10.Location = new System.Drawing.Point(6, 122);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 13);
-            this.label10.TabIndex = 0;
-            this.label10.Text = "Em Execução";
+            this.lblPServico.AutoSize = true;
+            this.lblPServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPServico.ForeColor = System.Drawing.Color.Green;
+            this.lblPServico.Location = new System.Drawing.Point(6, 122);
+            this.lblPServico.Name = "lblPServico";
+            this.lblPServico.Size = new System.Drawing.Size(73, 13);
+            this.lblPServico.TabIndex = 0;
+            this.lblPServico.Text = "Em Execução";
             // 
-            // label8
+            // lblPReplicador
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Green;
-            this.label8.Location = new System.Drawing.Point(6, 99);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 13);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Em Execução";
+            this.lblPReplicador.AutoSize = true;
+            this.lblPReplicador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPReplicador.ForeColor = System.Drawing.Color.Green;
+            this.lblPReplicador.Location = new System.Drawing.Point(6, 99);
+            this.lblPReplicador.Name = "lblPReplicador";
+            this.lblPReplicador.Size = new System.Drawing.Size(73, 13);
+            this.lblPReplicador.TabIndex = 0;
+            this.lblPReplicador.Text = "Em Execução";
             // 
             // lblQuantum
             // 
@@ -414,7 +413,7 @@
             this.chTodos.TabIndex = 1;
             this.chTodos.Text = "Todos";
             this.chTodos.UseVisualStyleBackColor = true;
-            this.chTodos.CheckedChanged += new System.EventHandler(this.chTodos_Changed);
+            this.chTodos.CheckedChanged += new System.EventHandler(this.ChTodos_Changed);
             // 
             // chIntegrador
             // 
@@ -543,24 +542,18 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button15);
-            this.groupBox2.Controls.Add(this.button13);
-            this.groupBox2.Controls.Add(this.button11);
-            this.groupBox2.Controls.Add(this.button9);
-            this.groupBox2.Controls.Add(this.button7);
-            this.groupBox2.Controls.Add(this.button5);
-            this.groupBox2.Controls.Add(this.button14);
-            this.groupBox2.Controls.Add(this.button12);
-            this.groupBox2.Controls.Add(this.button10);
-            this.groupBox2.Controls.Add(this.button8);
-            this.groupBox2.Controls.Add(this.button6);
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.textBox9);
-            this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox4);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox10);
+            this.groupBox2.Controls.Add(this.btSincronizador);
+            this.groupBox2.Controls.Add(this.btServidor);
+            this.groupBox2.Controls.Add(this.btServico);
+            this.groupBox2.Controls.Add(this.btReplicador);
+            this.groupBox2.Controls.Add(this.btQuantum);
+            this.groupBox2.Controls.Add(this.btIntegrador);
+            this.groupBox2.Controls.Add(this.txtSincronizador);
+            this.groupBox2.Controls.Add(this.txtServidor);
+            this.groupBox2.Controls.Add(this.txtServico);
+            this.groupBox2.Controls.Add(this.txtReplicador);
+            this.groupBox2.Controls.Add(this.txtQuantum);
+            this.groupBox2.Controls.Add(this.txtIntegrador);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label3);
@@ -575,155 +568,107 @@
             this.groupBox2.Text = "Executáveis";
             this.toolTip.SetToolTip(this.groupBox2, "Ne");
             // 
-            // button15
+            // btSincronizador
             // 
-            this.button15.Location = new System.Drawing.Point(273, 225);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(49, 23);
-            this.button15.TabIndex = 2;
-            this.button15.Text = "Parar";
-            this.button15.UseVisualStyleBackColor = true;
+            this.btSincronizador.Location = new System.Drawing.Point(218, 225);
+            this.btSincronizador.Name = "btSincronizador";
+            this.btSincronizador.Size = new System.Drawing.Size(104, 23);
+            this.btSincronizador.TabIndex = 2;
+            this.btSincronizador.Text = "Iniciar";
+            this.btSincronizador.UseVisualStyleBackColor = true;
+            this.btSincronizador.Click += new System.EventHandler(this.Bt_Sincronizador);
             // 
-            // button13
+            // btServidor
             // 
-            this.button13.Location = new System.Drawing.Point(273, 186);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(49, 23);
-            this.button13.TabIndex = 2;
-            this.button13.Text = "Parar";
-            this.button13.UseVisualStyleBackColor = true;
+            this.btServidor.Location = new System.Drawing.Point(218, 186);
+            this.btServidor.Name = "btServidor";
+            this.btServidor.Size = new System.Drawing.Size(104, 23);
+            this.btServidor.TabIndex = 2;
+            this.btServidor.Text = "Iniciar";
+            this.btServidor.UseVisualStyleBackColor = true;
+            this.btServidor.Click += new System.EventHandler(this.Bt_Servidor);
             // 
-            // button11
+            // btServico
             // 
-            this.button11.Location = new System.Drawing.Point(273, 147);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(49, 23);
-            this.button11.TabIndex = 2;
-            this.button11.Text = "Parar";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btServico.Location = new System.Drawing.Point(218, 147);
+            this.btServico.Name = "btServico";
+            this.btServico.Size = new System.Drawing.Size(104, 23);
+            this.btServico.TabIndex = 2;
+            this.btServico.Text = "Iniciar";
+            this.btServico.UseVisualStyleBackColor = true;
+            this.btServico.Click += new System.EventHandler(this.Bt_Servico);
             // 
-            // button9
+            // btReplicador
             // 
-            this.button9.Location = new System.Drawing.Point(273, 108);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(49, 23);
-            this.button9.TabIndex = 2;
-            this.button9.Text = "Parar";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btReplicador.Location = new System.Drawing.Point(218, 108);
+            this.btReplicador.Name = "btReplicador";
+            this.btReplicador.Size = new System.Drawing.Size(104, 23);
+            this.btReplicador.TabIndex = 2;
+            this.btReplicador.Text = "Iniciar";
+            this.btReplicador.UseVisualStyleBackColor = true;
+            this.btReplicador.Click += new System.EventHandler(this.Bt_Replicador);
             // 
-            // button7
+            // btQuantum
             // 
-            this.button7.Location = new System.Drawing.Point(273, 69);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(49, 23);
-            this.button7.TabIndex = 2;
-            this.button7.Text = "Parar";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btQuantum.Location = new System.Drawing.Point(218, 69);
+            this.btQuantum.Name = "btQuantum";
+            this.btQuantum.Size = new System.Drawing.Size(104, 23);
+            this.btQuantum.TabIndex = 2;
+            this.btQuantum.Text = "Iniciar";
+            this.btQuantum.UseVisualStyleBackColor = true;
+            this.btQuantum.Click += new System.EventHandler(this.Bt_Quantum);
             // 
-            // button5
+            // btIntegrador
             // 
-            this.button5.Location = new System.Drawing.Point(273, 30);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(49, 23);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Parar";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btIntegrador.Location = new System.Drawing.Point(218, 30);
+            this.btIntegrador.Name = "btIntegrador";
+            this.btIntegrador.Size = new System.Drawing.Size(104, 23);
+            this.btIntegrador.TabIndex = 2;
+            this.btIntegrador.Text = "Iniciar";
+            this.btIntegrador.UseVisualStyleBackColor = true;
+            this.btIntegrador.Click += new System.EventHandler(this.Bt_Integrador);
             // 
-            // button14
+            // txtSincronizador
             // 
-            this.button14.Location = new System.Drawing.Point(218, 225);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(49, 23);
-            this.button14.TabIndex = 2;
-            this.button14.Text = "Iniciar";
-            this.button14.UseVisualStyleBackColor = true;
+            this.txtSincronizador.Location = new System.Drawing.Point(6, 227);
+            this.txtSincronizador.Name = "txtSincronizador";
+            this.txtSincronizador.Size = new System.Drawing.Size(206, 20);
+            this.txtSincronizador.TabIndex = 0;
             // 
-            // button12
+            // txtServidor
             // 
-            this.button12.Location = new System.Drawing.Point(218, 186);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(49, 23);
-            this.button12.TabIndex = 2;
-            this.button12.Text = "Iniciar";
-            this.button12.UseVisualStyleBackColor = true;
+            this.txtServidor.Location = new System.Drawing.Point(6, 188);
+            this.txtServidor.Name = "txtServidor";
+            this.txtServidor.Size = new System.Drawing.Size(206, 20);
+            this.txtServidor.TabIndex = 0;
             // 
-            // button10
+            // txtServico
             // 
-            this.button10.Location = new System.Drawing.Point(218, 147);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(49, 23);
-            this.button10.TabIndex = 2;
-            this.button10.Text = "Iniciar";
-            this.button10.UseVisualStyleBackColor = true;
+            this.txtServico.Location = new System.Drawing.Point(6, 149);
+            this.txtServico.Name = "txtServico";
+            this.txtServico.Size = new System.Drawing.Size(206, 20);
+            this.txtServico.TabIndex = 0;
             // 
-            // button8
+            // txtReplicador
             // 
-            this.button8.Location = new System.Drawing.Point(218, 108);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(49, 23);
-            this.button8.TabIndex = 2;
-            this.button8.Text = "Iniciar";
-            this.button8.UseVisualStyleBackColor = true;
+            this.txtReplicador.Location = new System.Drawing.Point(6, 110);
+            this.txtReplicador.Name = "txtReplicador";
+            this.txtReplicador.Size = new System.Drawing.Size(206, 20);
+            this.txtReplicador.TabIndex = 0;
             // 
-            // button6
+            // txtQuantum
             // 
-            this.button6.Location = new System.Drawing.Point(218, 69);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(49, 23);
-            this.button6.TabIndex = 2;
-            this.button6.Text = "Iniciar";
-            this.button6.UseVisualStyleBackColor = true;
+            this.txtQuantum.Location = new System.Drawing.Point(6, 71);
+            this.txtQuantum.Name = "txtQuantum";
+            this.txtQuantum.Size = new System.Drawing.Size(206, 20);
+            this.txtQuantum.TabIndex = 0;
             // 
-            // button4
+            // txtIntegrador
             // 
-            this.button4.Location = new System.Drawing.Point(218, 30);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(49, 23);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Iniciar";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(6, 227);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(206, 20);
-            this.textBox9.TabIndex = 0;
-            // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(6, 188);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(206, 20);
-            this.textBox8.TabIndex = 0;
-            // 
-            // textBox7
-            // 
-            this.textBox7.Location = new System.Drawing.Point(6, 149);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(206, 20);
-            this.textBox7.TabIndex = 0;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(6, 110);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(206, 20);
-            this.textBox4.TabIndex = 0;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(6, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(206, 20);
-            this.textBox2.TabIndex = 0;
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(6, 32);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(206, 20);
-            this.textBox10.TabIndex = 0;
+            this.txtIntegrador.Location = new System.Drawing.Point(6, 32);
+            this.txtIntegrador.Name = "txtIntegrador";
+            this.txtIntegrador.Size = new System.Drawing.Size(206, 20);
+            this.txtIntegrador.TabIndex = 0;
             // 
             // label9
             // 
@@ -732,7 +677,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(71, 13);
             this.label9.TabIndex = 0;
-            this.label9.Text = "Sincronizaodr";
+            this.label9.Text = "Sincronizador";
             // 
             // label6
             // 
@@ -1005,7 +950,7 @@
             this.btConsulta.TabIndex = 7;
             this.btConsulta.Text = "Consultar Bases";
             this.btConsulta.UseVisualStyleBackColor = true;
-            this.btConsulta.Click += new System.EventHandler(this.btConsultaBases);
+            this.btConsulta.Click += new System.EventHandler(this.BtConsultaBases);
             // 
             // cmbSQLArquivo
             // 
@@ -1040,7 +985,7 @@
             this.chAtivaMon.TabIndex = 12;
             this.chAtivaMon.Text = "Ativar Monitorador de Serviços";
             this.chAtivaMon.UseVisualStyleBackColor = true;
-            this.chAtivaMon.CheckedChanged += new System.EventHandler(this.chAtivaMonitorador);
+            this.chAtivaMon.CheckedChanged += new System.EventHandler(this.ChAtivaMonitorador);
             // 
             // label14
             // 
@@ -1449,7 +1394,6 @@
             // 
             // tabServ
             // 
-            this.tabServ.Controls.Add(this.groupBox7);
             this.tabServ.Controls.Add(this.groupBox2);
             this.tabServ.Controls.Add(this.groupBox1);
             this.tabServ.Location = new System.Drawing.Point(4, 22);
@@ -1460,65 +1404,6 @@
             this.tabServ.Text = "Serviços";
             this.toolTip.SetToolTip(this.tabServ, "Nesta aba iremos tratar dos serviços do sistema.");
             this.tabServ.UseVisualStyleBackColor = true;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.cmbSQL);
-            this.groupBox7.Controls.Add(this.lblTeste);
-            this.groupBox7.Controls.Add(this.button17);
-            this.groupBox7.Controls.Add(this.button16);
-            this.groupBox7.Controls.Add(this.label11);
-            this.groupBox7.Location = new System.Drawing.Point(336, 264);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(328, 90);
-            this.groupBox7.TabIndex = 3;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "groupBox7";
-            // 
-            // cmbSQL
-            // 
-            this.cmbSQL.FormattingEnabled = true;
-            this.cmbSQL.Location = new System.Drawing.Point(9, 58);
-            this.cmbSQL.Name = "cmbSQL";
-            this.cmbSQL.Size = new System.Drawing.Size(203, 21);
-            this.cmbSQL.TabIndex = 3;
-            // 
-            // lblTeste
-            // 
-            this.lblTeste.AutoSize = true;
-            this.lblTeste.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTeste.Location = new System.Drawing.Point(78, 16);
-            this.lblTeste.Name = "lblTeste";
-            this.lblTeste.Size = new System.Drawing.Size(208, 29);
-            this.lblTeste.TabIndex = 1;
-            this.lblTeste.Text = "Editor de Registro";
-            // 
-            // button17
-            // 
-            this.button17.Location = new System.Drawing.Point(273, 55);
-            this.button17.Name = "button17";
-            this.button17.Size = new System.Drawing.Size(49, 23);
-            this.button17.TabIndex = 2;
-            this.button17.Text = "Parar";
-            this.button17.UseVisualStyleBackColor = true;
-            // 
-            // button16
-            // 
-            this.button16.Location = new System.Drawing.Point(218, 55);
-            this.button16.Name = "button16";
-            this.button16.Size = new System.Drawing.Size(49, 23);
-            this.button16.TabIndex = 2;
-            this.button16.Text = "Iniciar";
-            this.button16.UseVisualStyleBackColor = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 41);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(28, 13);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "SQL";
             // 
             // tabInf
             // 
@@ -1631,8 +1516,6 @@
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
             this.tabServ.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
             this.tabInf.ResumeLayout(false);
             this.tabInf.PerformLayout();
             this.tabMain.ResumeLayout(false);
@@ -1708,27 +1591,18 @@
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button17;
-        private System.Windows.Forms.Button button15;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button16;
-        private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btSincronizador;
+        private System.Windows.Forms.Button btServidor;
+        private System.Windows.Forms.Button btServico;
+        private System.Windows.Forms.Button btReplicador;
+        private System.Windows.Forms.Button btQuantum;
+        private System.Windows.Forms.Button btIntegrador;
+        private System.Windows.Forms.TextBox txtSincronizador;
+        private System.Windows.Forms.TextBox txtServidor;
+        private System.Windows.Forms.TextBox txtServico;
+        private System.Windows.Forms.TextBox txtReplicador;
+        private System.Windows.Forms.TextBox txtQuantum;
+        private System.Windows.Forms.TextBox txtIntegrador;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
@@ -1739,10 +1613,10 @@
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.Label lblPSQL;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblPSincronizador;
+        private System.Windows.Forms.Label lblPServidor;
+        private System.Windows.Forms.Label lblPServico;
+        private System.Windows.Forms.Label lblPReplicador;
         private System.Windows.Forms.CheckBox chSincronizador;
         private System.Windows.Forms.CheckBox chServidor;
         private System.Windows.Forms.CheckBox chServico;
@@ -1754,9 +1628,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox chTodos;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.ComboBox cmbSQL;
-        private System.Windows.Forms.Label lblTeste;
         private System.Windows.Forms.TabPage tabInf;
         private System.Windows.Forms.GroupBox groupBox15;
         private System.Windows.Forms.Button button1;
@@ -1779,6 +1650,7 @@
         private System.Windows.Forms.FolderBrowserDialog procuraPasta;
         private System.Windows.Forms.Label label18;
         public System.Windows.Forms.Button btSQLServico;
+        private System.Windows.Forms.Button button4;
     }
 }
 

@@ -24,10 +24,24 @@ namespace RaffRegServer
         
         public RaffRegServer()
         {
-            InitializeComponent();
-                gServicosProcessos();
+            try
+            {
+                InitializeComponent();
                 pRaff = PathRaffinato();
                 preencheDados();
+            }
+            catch (Exception ex)
+            {
+                reg.SalvarLog(ex.ToString());
+                MessageBox.Show(ex.ToString(), "Erro ao abrir.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            base.OnFormClosing(e);
+            Application.Exit();
         }
 
         #region registro (referência apenas)
@@ -89,8 +103,6 @@ namespace RaffRegServer
                 MessageBox.Show("Ocorreu um erro ao ler as entradas de registro.");
             }
 
-            
-
             cmbHosts.Items.Clear();
             //Preenche box dos ips
             List<string> ip = new List<string>();
@@ -118,7 +130,6 @@ namespace RaffRegServer
             ///<summary>
             ///Nomeação dos campos
             /// </summary>
-            tBRaffinato.Text = pRaff;
             txtBHostPDV.Text = dadosRegistro[0][1]; //Host do PDV
             txtBHostPDVPorta.Text = dadosRegistro[1][1]; //Porta do Host do PDV
             txtBFilial.Text = dadosRegistro[2][1]; //Filial
@@ -193,13 +204,16 @@ namespace RaffRegServer
                 for (int i = 0; i < sql.SSql().Count; i++)
                 {
                     cmBSQLServico.Items.Add(sql.SSql()[i]);
+
                 }
             }
             else
             {
                 cmBSQLServico.Items.Add(sql.SSql()[0]);
+
             }
             cmBSQLServico.SelectedIndex = 0;
+
 
             if (sql.StatusSQL(cmBSQLServico.SelectedItem.ToString()))
             {
@@ -234,19 +248,176 @@ namespace RaffRegServer
             txtNomePC.Text = Environment.MachineName;
             txtBoxRede.Text = reg.ShowNetworkInterfaces();
 
-            //Continuar daqui
-            /*string ips = "";
-            foreach (var item in reg.CIPs())
-            {
-                if (reg.Parse(item))
-                {
-                    ips += item +"\n";
-                    ips += "=================================\n";
-                }
-                
-            }*/
+            //campos da aba monitorador
+            Monitorador();
+            tBRaffinato.Text = pRaff;
+
+
+
+        }
+
+        //Monitorador de Serviços
+        private void Monitorador()
+        {
+            Color r = Color.Red;
+            Color g = Color.Green;
+            string p = "Executando";
+            string a = "Parado";
+            string iniciar = "Iniciar";
+            string parar = "Parar";
             
 
+            if (PegarProcesso("sqlservr"))
+            {
+                lblPSQL.Text = p;
+                lblPSQL.ForeColor = g;
+            }
+            else
+            {
+                lblPSQL.Text = a;
+                lblPSQL.ForeColor = r;
+            }
+            
+            if (PegarProcesso("Integrador"))
+            {
+                lblPIntegrador.ForeColor = g;
+                lblPIntegrador.Text = p;
+                btIntegrador.Text = parar;
+            }
+            else
+            {
+                lblPIntegrador.ForeColor = r;
+                lblPIntegrador.Text = a;
+                btIntegrador.Text = iniciar;
+            }
+
+            if (PegarProcesso("QS"))
+            {
+                lblQuantum.ForeColor = g;
+                lblQuantum.Text = p;
+                btQuantum.Text = parar;
+            }
+            else
+            {
+                lblQuantum.ForeColor = r;
+                lblQuantum.Text = a;
+                btQuantum.Text = iniciar;
+            }
+            if (PegarProcesso("Replicador"))
+            {
+                lblPReplicador.Text = p;
+                lblPReplicador.ForeColor = g;
+                btReplicador.Text = parar;
+            }
+            else
+            {
+                lblPReplicador.Text = a;
+                lblPReplicador.ForeColor = r;
+                btReplicador.Text = iniciar;
+            }
+            if (PegarProcesso("Servico"))
+            {
+                lblPServico.Text = p;
+                lblPServico.ForeColor = g;
+                btServico.Text = parar;
+            }
+            else
+            {
+                lblPServico.Text = a;
+                lblPServico.ForeColor = r;
+                btServico.Text = iniciar;
+            }
+            if (PegarProcesso("Servidor"))
+            {
+                lblPServidor.Text = p;
+                lblPServidor.ForeColor = g;
+                btServidor.Text = parar;
+            }
+            else
+            {
+                lblPServidor.Text = a;
+                lblPServidor.ForeColor = r;
+                btServidor.Text = iniciar;
+            }
+            if (PegarProcesso("Sincronizador"))
+            {
+                lblPSincronizador.Text = p;
+                lblPSincronizador.ForeColor = g;
+                btSincronizador.Text = parar;
+            }
+            else
+            {
+                lblPSincronizador.Text = a;
+                lblPSincronizador.ForeColor = r;
+                btSincronizador.Text = iniciar;
+            }
+            if (File.Exists(pRaff+ "\\Integrador.exe"))
+            {
+                txtIntegrador.Text = pRaff + "\\Integrador.exe";
+            }
+            else
+            {
+                txtIntegrador.Text = "Executável Ausente";
+            }
+            if (File.Exists(@"C:\QS\QS.exe"))
+            {
+                txtQuantum.Text = "C:\\QS\\QS.exe";
+            }
+            else
+            {
+                txtQuantum.Text = "Quantum Não Instalado";
+            }
+            if (File.Exists(pRaff + "\\Replicador.exe"))
+            {
+                txtReplicador.Text = pRaff + "\\Replicador.exe";
+            }
+            else
+            {
+                txtReplicador.Text = "Executável Ausente";
+            }
+            if(File.Exists(pRaff + "\\Servico.exe"))
+            {
+                txtServico.Text = pRaff + "\\Servico.exe";
+            }
+            else
+            {
+                txtServico.Text = "Executável Ausente";
+            }
+            if (File.Exists(pRaff + "\\Servidor.exe"))
+            {
+                txtServidor.Text = pRaff + "\\Servidor.exe";
+            }
+            else
+            {
+                txtServidor.Text = "Executável Ausente";
+            }
+            if (File.Exists(pRaff + "\\Sincronizador.exe"))
+            {
+                txtSincronizador.Text = pRaff + "\\Sincronizador.exe";
+            }
+            else
+            {
+                txtSincronizador.Text = "Executável Ausente";
+            }
+        }
+
+        public static void IniciarPrograma(string programa)
+        {
+            Process p = new Process();
+            p.StartInfo.FileName = programa;
+            p.StartInfo.UseShellExecute = false;
+            p.StartInfo.RedirectStandardOutput = false;
+            p.Start();
+        }
+
+        public static void PararPrograma(string processo)
+        {
+            Process[] p = Process.GetProcessesByName(processo);
+            foreach (Process proc in p)
+            {
+                proc.Kill();
+            }
+            
         }
 
         //Procura e seta o caminho da pasta Raffinato.
@@ -286,13 +457,13 @@ namespace RaffRegServer
                 String pasta = "-----------------\n";
                 pasta += dirs[0].ToString() + "\n";
                 pasta += "-----------------\n";
-                MessageBox.Show("Raffinato encontrado na pasta\n" + pasta + "e será usado como referência.");
+                //MessageBox.Show("Raffinato encontrado na pasta\n" + pasta + "e será usado como referência.");
                 return dirs[0].ToString();
             }
         }
 
         //função para marcar desmarcar serviços a serem monitorados
-        private void chTodos_Changed(object sender, EventArgs e)
+        private void ChTodos_Changed(object sender, EventArgs e)
         {
             if (chTodos.Checked == true)
             {
@@ -317,53 +488,8 @@ namespace RaffRegServer
         }
 
         //gerenciar serviços e processos
-        private void gServicosProcessos()
-        {
-            Color r = Color.Red;
-            Color g = Color.Green;
-
-            try
-            {
-                getServices("MSSQL$SQL2014");
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Erro ao pegar os serviços do SQL.");
-            }
-            
-
-            //Declarando a classe ServiceController e preenchendo um array com todos os serviços 
-            //do windows usando o método GetServices()
-            ServiceController ctl = ServiceController.GetServices()
-                .FirstOrDefault(s => s.ServiceName == "MSSQL$SQL2014");
-            if (ctl == null)
-                lblPSQL.ForeColor = r;
-            else
-                lblPSQL.ForeColor = g;
-
-            if (GetProcess("Integrador"))
-            {
-                lblPIntegrador.ForeColor = g;
-                lblPIntegrador.Text = "Executando";
-            }
-            else
-            {
-                lblPIntegrador.ForeColor = r;
-                lblPIntegrador.Text = "Parado/Ausente";
-            }
-
-            if (GetProcess("QS"))
-            {
-                lblQuantum.ForeColor = g;
-                lblQuantum.Text = "Executando";
-            }
-            else
-            {
-                lblQuantum.ForeColor = r;
-                lblQuantum.Text = "Parado/Ausente";
-            }
-        }
-        private void chAtivaMonitorador(object sender, EventArgs e)
+        
+        private void ChAtivaMonitorador(object sender, EventArgs e)
         {
             if (chAtivaMon.Checked == true)
             {
@@ -376,7 +502,7 @@ namespace RaffRegServer
 
         }
 
-        public static bool getServices(string serviceName)
+        public static bool PegarServico(string serviceName)
         {
             ServiceController[] services = ServiceController.GetServices();
             foreach (ServiceController service in services)
@@ -387,7 +513,7 @@ namespace RaffRegServer
             return false;
         }
 
-        public static bool GetProcess(string processName)
+        public static bool PegarProcesso(string processName)
         {
             Process[] processos = Process.GetProcesses();
 
@@ -424,7 +550,7 @@ namespace RaffRegServer
 
         }
 
-        public void btConsultaBases(object sender, EventArgs e)
+        public void BtConsultaBases(object sender, EventArgs e)
         {
             DialogResult resultado = MessageBox.Show("O sistema irá tentar conectar no SQL " +
                 "utilizando o usuário e senha padrão.\nDeseja prosseguir?",
@@ -531,7 +657,7 @@ namespace RaffRegServer
             c.Show();
         }
 
-        private void BTSalvarArquivo(object sender, EventArgs e)
+       private void BTSalvarArquivo(object sender, EventArgs e)
         {
             reg.SalvarArquivoConfiguracoes(Configs());
 
@@ -597,7 +723,7 @@ namespace RaffRegServer
             string pathArquivos = @pRaff + "\\log";
 
             if (Directory.GetDirectories(pathArquivos).Length.Equals(0)
-            || Directory.GetFiles(pathArquivos).Length.Equals(0))
+            && Directory.GetFiles(pathArquivos).Length.Equals(0))
             {
                 MessageBox.Show("A pasta de logs está vazia.");
             }
@@ -613,6 +739,101 @@ namespace RaffRegServer
         {
             Forms.AboutBox a = new Forms.AboutBox();
             a.Show();
+        }
+
+        private void Bt_Integrador(object sender, EventArgs e)
+        {
+            if (PegarProcesso("Integrador"))
+            {
+                PararPrograma("Integrador");
+                btIntegrador.Text = "Iniciar";
+            }
+            else
+            {
+                IniciarPrograma(txtIntegrador.Text);
+                btIntegrador.Text = "Parar";
+            }
+            Monitorador();
+        }
+
+        private void Bt_Quantum(object sender, EventArgs e)
+        {
+            if (PegarProcesso("QS"))
+            {
+                PararPrograma("QS");
+                btQuantum.Text = "Iniciar";
+            }
+            else
+            {
+                IniciarPrograma(txtQuantum.Text);
+                btQuantum.Text = "Parar";
+            }
+            Monitorador();
+        }
+
+        private void Bt_Replicador(object sender, EventArgs e)
+        {
+            if (PegarProcesso("Replicador"))
+            {
+                PararPrograma("Replicador");
+                btReplicador.Text = "Iniciar";
+            }
+            else
+            {
+                IniciarPrograma(txtReplicador.Text);
+                btReplicador.Text = "Parar";
+            }
+            Monitorador();
+        }
+
+        private void Bt_Servico(object sender, EventArgs e)
+        {
+            if (PegarProcesso("Servico"))
+            {
+                PararPrograma("Servico");
+                btServico.Text = "Iniciar";
+            }
+            else
+            {
+                IniciarPrograma(txtServico.Text);
+                btServico.Text = "Parar";
+            }
+            Monitorador();
+        }
+
+        private void Bt_Servidor(object sender, EventArgs e)
+        {
+            if (PegarProcesso("Servidor"))
+            {
+                PararPrograma("Servidor");
+                btServidor.Text = "Iniciar";
+            }
+            else
+            {
+                IniciarPrograma(txtServidor.Text);
+                btServidor.Text = "Parar";
+            }
+            Monitorador();
+        }
+
+        private void Bt_Sincronizador(object sender, EventArgs e)
+        {
+            if (PegarProcesso("Sincronizador"))
+            {
+                PararPrograma("Sincronizador");
+                btSincronizador.Text = "Iniciar";
+            }
+            else
+            {
+                IniciarPrograma(txtSincronizador.Text);
+                btSincronizador.Text = "Parar";
+            }
+            Monitorador();
+        }
+
+        private void BtAtualizarStatus(object sender, EventArgs e)
+        {
+            Monitorador();
         }
     }
 }

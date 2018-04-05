@@ -613,6 +613,23 @@ namespace RaffRegServer.Classes
             return pIPS;
         }
 
+        public void SalvarLog(string e)
+        {
+            string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            string arquivo = Path.Combine(path, "Log.txt");
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(arquivo, true))
+            {
+                var n = Environment.NewLine;
+                file.WriteLine("Foram encontrados erros durante a execução do programa." + n);
+                file.WriteLine("Por favor envie este arquivo para: "  + n);
+                file.WriteLine("emerson@raffinato.inf.br " + n);
+                file.WriteLine(n);
+                file.WriteLine("Os erros encontrados foram: " + n);
+                file.WriteLine("----------------------------------------------------------" + n);
+                file.WriteLine(e + n);
+            }
+        }
+
         public void SalvarArquivoConfiguracoes(List<string> dados)
         {
             string desktop = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
