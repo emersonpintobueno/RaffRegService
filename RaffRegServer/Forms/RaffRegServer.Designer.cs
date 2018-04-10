@@ -37,9 +37,9 @@
             this.tBRaffinato = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btInstMon = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.lblPSQL = new System.Windows.Forms.Label();
+            this.lblPExportador = new System.Windows.Forms.Label();
             this.lblPSincronizador = new System.Windows.Forms.Label();
             this.lblPServidor = new System.Windows.Forms.Label();
             this.lblPServico = new System.Windows.Forms.Label();
@@ -156,6 +156,9 @@
             this.tabMain = new System.Windows.Forms.TabControl();
             this.procuraPasta = new System.Windows.Forms.FolderBrowserDialog();
             this.label18 = new System.Windows.Forms.Label();
+            this.lblExportador = new System.Windows.Forms.Label();
+            this.txtExportador = new System.Windows.Forms.TextBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -224,7 +227,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.button4);
-            this.groupBox3.Controls.Add(this.button3);
+            this.groupBox3.Controls.Add(this.btInstMon);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Location = new System.Drawing.Point(6, 74);
@@ -244,18 +247,19 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.BtAtualizarStatus);
             // 
-            // button3
+            // btInstMon
             // 
-            this.button3.Location = new System.Drawing.Point(6, 239);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(183, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Instalar Monitorador";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btInstMon.Location = new System.Drawing.Point(6, 239);
+            this.btInstMon.Name = "btInstMon";
+            this.btInstMon.Size = new System.Drawing.Size(183, 23);
+            this.btInstMon.TabIndex = 2;
+            this.btInstMon.Text = "Instalar Monitorador";
+            this.btInstMon.UseVisualStyleBackColor = true;
+            this.btInstMon.Click += new System.EventHandler(this.BtInstMon);
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.lblPSQL);
+            this.groupBox5.Controls.Add(this.lblPExportador);
             this.groupBox5.Controls.Add(this.lblPSincronizador);
             this.groupBox5.Controls.Add(this.lblPServidor);
             this.groupBox5.Controls.Add(this.lblPServico);
@@ -269,16 +273,16 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Status";
             // 
-            // lblPSQL
+            // lblPExportador
             // 
-            this.lblPSQL.AutoSize = true;
-            this.lblPSQL.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPSQL.ForeColor = System.Drawing.Color.Green;
-            this.lblPSQL.Location = new System.Drawing.Point(6, 191);
-            this.lblPSQL.Name = "lblPSQL";
-            this.lblPSQL.Size = new System.Drawing.Size(73, 13);
-            this.lblPSQL.TabIndex = 0;
-            this.lblPSQL.Text = "Em Execução";
+            this.lblPExportador.AutoSize = true;
+            this.lblPExportador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPExportador.ForeColor = System.Drawing.Color.Green;
+            this.lblPExportador.Location = new System.Drawing.Point(6, 191);
+            this.lblPExportador.Name = "lblPExportador";
+            this.lblPExportador.Size = new System.Drawing.Size(73, 13);
+            this.lblPExportador.TabIndex = 0;
+            this.lblPExportador.Text = "Em Execução";
             // 
             // lblPSincronizador
             // 
@@ -440,9 +444,9 @@
             this.chSQL.AutoSize = true;
             this.chSQL.Location = new System.Drawing.Point(6, 190);
             this.chSQL.Name = "chSQL";
-            this.chSQL.Size = new System.Drawing.Size(47, 17);
+            this.chSQL.Size = new System.Drawing.Size(77, 17);
             this.chSQL.TabIndex = 1;
-            this.chSQL.Text = "SQL";
+            this.chSQL.Text = "Exportador";
             this.chSQL.UseVisualStyleBackColor = true;
             // 
             // label16
@@ -542,17 +546,20 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.button3);
             this.groupBox2.Controls.Add(this.btSincronizador);
             this.groupBox2.Controls.Add(this.btServidor);
             this.groupBox2.Controls.Add(this.btServico);
             this.groupBox2.Controls.Add(this.btReplicador);
             this.groupBox2.Controls.Add(this.btQuantum);
+            this.groupBox2.Controls.Add(this.txtExportador);
             this.groupBox2.Controls.Add(this.btIntegrador);
             this.groupBox2.Controls.Add(this.txtSincronizador);
             this.groupBox2.Controls.Add(this.txtServidor);
             this.groupBox2.Controls.Add(this.txtServico);
             this.groupBox2.Controls.Add(this.txtReplicador);
             this.groupBox2.Controls.Add(this.txtQuantum);
+            this.groupBox2.Controls.Add(this.lblExportador);
             this.groupBox2.Controls.Add(this.txtIntegrador);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label6);
@@ -562,7 +569,7 @@
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(336, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(328, 254);
+            this.groupBox2.Size = new System.Drawing.Size(328, 323);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Executáveis";
@@ -1476,6 +1483,32 @@
             this.label18.Text = "Assemble";
             this.label18.Click += new System.EventHandler(this.AboutBox);
             // 
+            // lblExportador
+            // 
+            this.lblExportador.AutoSize = true;
+            this.lblExportador.Location = new System.Drawing.Point(6, 250);
+            this.lblExportador.Name = "lblExportador";
+            this.lblExportador.Size = new System.Drawing.Size(58, 13);
+            this.lblExportador.TabIndex = 0;
+            this.lblExportador.Text = "Exportador";
+            // 
+            // txtExportador
+            // 
+            this.txtExportador.Location = new System.Drawing.Point(6, 266);
+            this.txtExportador.Name = "txtExportador";
+            this.txtExportador.Size = new System.Drawing.Size(206, 20);
+            this.txtExportador.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(218, 264);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(104, 23);
+            this.button3.TabIndex = 2;
+            this.button3.Text = "Iniciar";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.Bt_Exportador);
+            // 
             // RaffRegServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1590,7 +1623,7 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btInstMon;
         private System.Windows.Forms.Button btSincronizador;
         private System.Windows.Forms.Button btServidor;
         private System.Windows.Forms.Button btServico;
@@ -1612,7 +1645,7 @@
         private System.Windows.Forms.Label lblPIntegrador;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.GroupBox groupBox6;
-        private System.Windows.Forms.Label lblPSQL;
+        private System.Windows.Forms.Label lblPExportador;
         private System.Windows.Forms.Label lblPSincronizador;
         private System.Windows.Forms.Label lblPServidor;
         private System.Windows.Forms.Label lblPServico;
@@ -1651,6 +1684,9 @@
         private System.Windows.Forms.Label label18;
         public System.Windows.Forms.Button btSQLServico;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.TextBox txtExportador;
+        private System.Windows.Forms.Label lblExportador;
     }
 }
 

@@ -24,18 +24,28 @@ namespace RaffRegServer
         
         public RaffRegServer()
         {
-            try
+            bool debug = false;
+
+            if (debug)
+            {
+                try
+                {
+                    InitializeComponent();
+                    pRaff = PathRaffinato();
+                    preencheDados();
+                }
+                catch (Exception ex)
+                {
+                    reg.SalvarLog(ex.ToString());
+                    MessageBox.Show(ex.ToString(), "Erro ao abrir.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
             {
                 InitializeComponent();
                 pRaff = PathRaffinato();
                 preencheDados();
             }
-            catch (Exception ex)
-            {
-                reg.SalvarLog(ex.ToString());
-                MessageBox.Show(ex.ToString(), "Erro ao abrir.", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
@@ -267,15 +277,15 @@ namespace RaffRegServer
             string parar = "Parar";
             
 
-            if (PegarProcesso("sqlservr"))
+            if (PegarProcesso("Exportador"))
             {
-                lblPSQL.Text = p;
-                lblPSQL.ForeColor = g;
+                lblPExportador.Text = p;
+                lblPExportador.ForeColor = g;
             }
             else
             {
-                lblPSQL.Text = a;
-                lblPSQL.ForeColor = r;
+                lblPExportador.Text = a;
+                lblPExportador.ForeColor = r;
             }
             
             if (PegarProcesso("Integrador"))
@@ -399,6 +409,14 @@ namespace RaffRegServer
             {
                 txtSincronizador.Text = "Executável Ausente";
             }
+            if (File.Exists(pRaff + "\\Exportador.exe"))
+            {
+                txtExportador.Text = pRaff + "\\Exportador.exe";
+            }
+            else
+            {
+                txtExportador.Text = "Executável Ausente";
+            }
         }
 
         public static void IniciarPrograma(string programa)
@@ -439,26 +457,37 @@ namespace RaffRegServer
                                     .ToList());
             }
 
-            if (dirs.Count > 1)
+            if (dirs.Count == 0)
             {
-                String cEnt = "-----------------\n";
-
-                for (int i = 0; i < dirs.Count; i++)
-                {
-                    cEnt += dirs[i].ToString() + "\n";
-                }
-                cEnt += "-----------------\n";
-                MessageBox.Show("Foram encontradas as seguintes pastas do Raffinato.\n" +
-                   cEnt + "Na tela a seguir selecione a pasta a ser usada.");
-                return procuraPasta.ShowDialog() == DialogResult.OK ? procuraPasta.SelectedPath : string.Empty;
+                MessageBox.Show("A pasta Raffinato não foi encontrada em seu sistema.\n" +
+                    "O aplicativo será encerrado agora.",
+                        "Sem Raffinato?", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+                return "Teste";
             }
             else
             {
-                String pasta = "-----------------\n";
-                pasta += dirs[0].ToString() + "\n";
-                pasta += "-----------------\n";
-                //MessageBox.Show("Raffinato encontrado na pasta\n" + pasta + "e será usado como referência.");
-                return dirs[0].ToString();
+                if (dirs.Count > 1)
+                {
+                    String cEnt = "-----------------\n";
+
+                    for (int i = 0; i < dirs.Count; i++)
+                    {
+                        cEnt += dirs[i].ToString() + "\n";
+                    }
+                    cEnt += "-----------------\n";
+                    MessageBox.Show("Foram encontradas as seguintes pastas do Raffinato.\n" +
+                       cEnt + "Na tela a seguir selecione a pasta a ser usada.");
+                    return procuraPasta.ShowDialog() == DialogResult.OK ? procuraPasta.SelectedPath : string.Empty;
+                }
+                else
+                {
+                    String pasta = "-----------------\n";
+                    pasta += dirs[0].ToString() + "\n";
+                    pasta += "-----------------\n";
+                    //MessageBox.Show("Raffinato encontrado na pasta\n" + pasta + "e será usado como referência.");
+                    return dirs[0].ToString();
+                }
             }
         }
 
@@ -831,9 +860,83 @@ namespace RaffRegServer
             Monitorador();
         }
 
+        private void Bt_Exportador(object sender, EventArgs e)
+        {
+            if (PegarProcesso("Exportador"))
+            {
+                PararPrograma("Exportador");
+                btSincronizador.Text = "Iniciar";
+            }
+            else
+            {
+                IniciarPrograma(txtExportador.Text);
+                btSincronizador.Text = "Parar";
+            }
+            Monitorador();
+        }
+
         private void BtAtualizarStatus(object sender, EventArgs e)
         {
             Monitorador();
+        }
+
+        private void BtInstMon(object sender, EventArgs e)
+        {
+
+            List<string> lista = new List<string>();
+            int ss = 0;
+            if (chIntegrador.Checked)
+            {
+                lista.Add("Integrador" + "|" + txtIntegrador.Text);
+                ss++;
+            }
+            if (chQuantum.Checked)
+            {
+                lista.Add("Quantum" +"|"+ txtQuantum.Text);
+                ss++;
+            }
+            if (chReplicador.Checked)
+            {
+                lista.Add("Replicador"+"|"+ txtReplicador.Text);
+                ss++;
+            }
+            if (chServico.Checked)
+            {
+                lista.Add("Servico"+"|"+txtServico.Text);
+                ss++;
+            }
+            if (chServidor.Checked)
+            {
+                lista.Add("Servidor" + "|" + txtServidor.Text);
+                ss++;
+            }
+            if (chSincronizador.Checked)
+            {
+                lista.Add("Sincronizador" + "|" + txtSincronizador.Text);
+                ss++;
+            }
+            if (ss > 0)
+            {
+                DialogResult salvar = MessageBox.Show("Você gostaria de aproveitar para acrescentar esses " +
+                "programas a inicialização do Windows?\nSim = Salvar\nNão = Remover (caso já esteja salvo)\n" +
+                "Cancelar = Não irá alterar o status atual de inicialização dos programas\n" +
+                "\n" +
+                "Os programas ainda serão salvos para a lista de monitoramento.", "Salvar Para Inicialização?",
+                MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+
+                if (salvar == DialogResult.Yes)
+                {
+                    reg.SalvarIniciar(lista, true);
+                }
+                else if (salvar == DialogResult.No)
+                {
+                    reg.SalvarIniciar(lista, false);
+                }
+                else if (salvar == DialogResult.Cancel)
+                {
+                    return;
+                }
+            }
         }
     }
 }

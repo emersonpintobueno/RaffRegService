@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using RaffRegServer;
 
 namespace RaffRegServer.Forms
 {
@@ -17,7 +18,7 @@ namespace RaffRegServer.Forms
             InitializeComponent();
             
         }
-
+        
         string user = "Raffinato";
         static int dia = DateTime.Now.Day;
         static int mes = DateTime.Now.Month;
@@ -37,16 +38,16 @@ namespace RaffRegServer.Forms
 
                 if (txtUser.Text.Equals(user) && s != senha)
                 {
-                    MessageBox.Show("Senha Incorreta.\nVerifique a senha e tente novamente.");
+                    MessageBox.Show("Senha Incorreta.\nVerifique a senha e tente novamente.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 if (!txtUser.Text.Equals(user) && s == senha)
                 {
-                    MessageBox.Show("Usuário Incorreto.\nVerifique o usuário e tente novamente.");
+                    MessageBox.Show("Usuário Incorreto.\nVerifique o usuário e tente novamente.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
                 if (!txtUser.Text.Equals(user) && s != senha)
                 {
-                    MessageBox.Show("Usuário e senha Incorretos.\nVerifique os dados e tente novamente.");
+                    MessageBox.Show("Usuário e senha Incorretos.\nVerifique os dados e tente novamente.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 if (txtUser.Text.Equals(user) && s == senha)
                 {

@@ -19,7 +19,7 @@ namespace RaffRegServer.Classes
     public class registro {
 
         string lh = "localhost";
-
+        
         public string[][] leRegistro() {
 
             #region registro (referência apenas)
@@ -615,9 +615,9 @@ namespace RaffRegServer.Classes
 
         public void SalvarLog(string e)
         {
-            string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
-            string arquivo = Path.Combine(path, "Log.txt");
-            using (System.IO.StreamWriter file = new System.IO.StreamWriter(arquivo, true))
+            //string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
+            //string arquivo = Path.Combine(path, "Log.txt");
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter("Log.txt", true))
             {
                 var n = Environment.NewLine;
                 file.WriteLine("Foram encontrados erros durante a execução do programa." + n);
@@ -922,6 +922,42 @@ namespace RaffRegServer.Classes
             }
             return sc;
         }
+        public void SalvarIniciar(List<string>dados, bool install)
+        {
+            RegistryKey localKey = Registry.CurrentUser.OpenSubKey
+                ("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
 
+            if (install)
+            {
+                for (int i = 0; i < dados.Count; i++)
+                {
+                    int tot = dados[i].Count();
+                    int st = dados[i].IndexOf("|");
+                    string programa = dados[i].Substring(0, st);
+                    string caminho = dados[i].Substring(st+1, (tot-st)-1);
+                    localKey.SetValue(programa, caminho);
+                    //localKey.SetValue(dados[0][i], Application.ExecutablePath);
+                }
+            }
+            if (!install)
+            {
+                for (int i = 0; i < dados.Count; i++)
+                {
+                    int tot = dados[i].Count();
+                    int st = dados[i].IndexOf("|");
+                    string programa = dados[i].Substring(0, st);
+                    string caminho = dados[i].Substring(st + 1, (tot - st) - 1);
+                    if (localKey.GetValue(programa)==null)
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        localKey.DeleteValue(programa);
+                    }
+                    
+                }
+            }
+         }
     }
 }
