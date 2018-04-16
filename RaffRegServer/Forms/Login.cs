@@ -24,10 +24,12 @@ namespace RaffRegServer.Forms
         static int mes = DateTime.Now.Month;
         static int ano = DateTime.Now.Year;
 
-        int senha = dia + mes + ano;
+        static int so = dia + mes;
 
+        int senha = Convert.ToInt32(string.Format("{0}{1}", so, ano));
+        
         private void BtLogin(object sender, EventArgs e)
-        {
+        { 
             //bool parsed = int.TryParse(txtSenha.Text, out int s);
             if (!int.TryParse(txtSenha.Text, out int s))
             {

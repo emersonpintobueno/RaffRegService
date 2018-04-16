@@ -237,8 +237,28 @@ namespace RaffRegServer
 
             //preencher as bases de dados disponíveis no sql
             cmbSQLArquivo.Items.Add(dadosRegistro[20][1]);
-            cmbSQLArquivo.SelectedIndex = 0;
+            string s = "";
+            try
+            {
+                s = cmbSQLArquivo.SelectedItem.ToString();
+            }
+            catch (Exception)
+            {
+                
+            }
+            int si = cmbSQLArquivo.SelectedIndex;
+            string e = dadosRegistro[20][1];
+            if (s.Equals(e))
+            {
+                cmbSQLArquivo.SelectedIndex = si;
+            }
+            else
+            {
+                cmbSQLArquivo.SelectedIndex = 0;
+            }
 
+            
+            
             txtBServMicro.Text = dadosRegistro[21][1];
 
             txtTimeoutQuery.Text = dadosRegistro[22][1];
